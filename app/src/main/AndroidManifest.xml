@@ -18,6 +18,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".view.ControlAirConditioning" />
+        <activity android:name=".view.ControlLightActivity"></activity>
     </application>
 
 </manifest>
