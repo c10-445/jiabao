@@ -1,20 +1,18 @@
 package edu.jiabao.view;
 
-import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 import edu.jiabao.R;
 
 public class MainActivity extends AppCompatActivity implements IMainView{
 
-    private TextView mTextMessage;
     private FragmentManager fragmentManager;
     private Fragment homeFragment;
     private Fragment labelFragment;
@@ -27,35 +25,79 @@ public class MainActivity extends AppCompatActivity implements IMainView{
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
+                    showFragment("home");
                     return true;
                 case R.id.navigation_label:
-                    mTextMessage.setText(R.string.title_label);
+                    showFragment("label");
                     return true;
                 case R.id.navigation_timing:
-                    mTextMessage.setText(R.string.title_timing);
+                    showFragment("timing");
                     return true;
             }
             return false;
         }
     };
 
+    void showFragment(String name){
+        FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+        switch (name){
+            case "home":
+                setTitle("首页");
+                fragmentTransaction.hide(labelFragment).hide(timingFragment).show(homeFragment);
+                fragmentTransaction.commit();
+                break;
+            case "label":
+                setTitle("分类");
+                fragmentTransaction.hide(labelFragment).hide(homeFragment).show(labelFragment);
+                fragmentTransaction.commit();
+                break;
+            case "timing":
+                setTitle("定时");
+                fragmentTransaction.hide(labelFragment).hide(homeFragment).show(timingFragment);
+                fragmentTransaction.commit();
+                break;
+        }
+
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         init();
-        mTextMessage = (TextView) findViewById(R.id.message);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        navigation.setSelectedItemId(R.id.navigation_home);
+
+
     }
 
     void init(){
+        //setCustomActionBar();
         homeFragment=new homeFragment();
+        labelFragment=new labelFragment();
+        timingFragment=new timingFragment();
+
         fragmentManager=this.getSupportFragmentManager();
         FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.fragment_layout,homeFragment,"home");
+        fragmentTransaction.add(R.id.fragment_layout,labelFragment,"label");
+        fragmentTransaction.add(R.id.fragment_layout,timingFragment,"timing");
+        fragmentTransaction.hide(labelFragment).hide(timingFragment).show(homeFragment);
         fragmentTransaction.commit();
+
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        navigation.setSelectedItemId(R.id.navigation_home);;
+        navigation.setBackgroundColor(getResources().getColor(R.color.colorHoloBlue));
+        navigation.setDrawingCacheBackgroundColor(getResources().getColor(R.color.colorHoloBlue));
     }
+/*
+    private void setCustomActionBar() {
+        ActionBar.LayoutParams lp =new ActionBar.LayoutParams(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT, Gravity.CENTER);
+        View mActionBarView = LayoutInflater.from(this).inflate(R.layout.actionbar_layout, null);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setCustomView(mActionBarView, lp);
+        actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        actionBar.setDisplayShowCustomEnabled(true);
+        actionBar.setDisplayShowHomeEnabled(false);
+        actionBar.setDisplayShowTitleEnabled(false);
+    }*/
 }

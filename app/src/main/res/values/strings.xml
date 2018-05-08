@@ -1,6 +1,9 @@
 <resources>
-    <string name="app_name">jiabao</string>
+    <string name="app_name">家具控制一体化App</string>
     <string name="title_home">首页</string>
     <string name="title_label">分类</string>
     <string name="title_timing">定时</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
