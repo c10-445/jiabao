@@ -54,7 +54,7 @@ public class TimingListAdapter extends BaseAdapter {
         if (convertView == null) {
             listItemView = new ListItemView();
             //获取list_item布局文件的视图
-            convertView = listContainer.inflate(R.layout.timing_list_item, null);
+            convertView = listContainer.inflate(R.layout.item_timing_list, null);
             //获取控件对象
             listItemView.title = (TextView)convertView.findViewById(R.id.timing_item_title);
             listItemView.switch2=convertView.findViewById(R.id.switch2);

@@ -52,7 +52,7 @@ public class LabelListAdapter extends BaseAdapter {
         if (convertView == null) {
             listItemView = new ListItemView();
             //获取list_item布局文件的视图
-            convertView = listContainer.inflate(R.layout.label_list_item, null);
+            convertView = listContainer.inflate(R.layout.item_label_list, null);
             //获取控件对象
             listItemView.title = (TextView)convertView.findViewById(R.id.label_item_title);
             //设置控件集到convertView

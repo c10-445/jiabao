@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity implements IMainView{
     private Fragment homeFragment;
     private Fragment labelFragment;
     private Fragment timingFragment;
+    //private DrawerLayout drawerLayout;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -62,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements IMainView{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.main_container);
 
         init();
 
@@ -70,7 +71,6 @@ public class MainActivity extends AppCompatActivity implements IMainView{
     }
 
     void init(){
-        //setCustomActionBar();
         homeFragment=new homeFragment();
         labelFragment=new labelFragment();
         timingFragment=new timingFragment();
@@ -89,15 +89,4 @@ public class MainActivity extends AppCompatActivity implements IMainView{
         navigation.setBackgroundColor(getResources().getColor(R.color.colorHoloBlue));
         navigation.setDrawingCacheBackgroundColor(getResources().getColor(R.color.colorHoloBlue));
     }
-/*
-    private void setCustomActionBar() {
-        ActionBar.LayoutParams lp =new ActionBar.LayoutParams(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT, Gravity.CENTER);
-        View mActionBarView = LayoutInflater.from(this).inflate(R.layout.actionbar_layout, null);
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setCustomView(mActionBarView, lp);
-        actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        actionBar.setDisplayShowCustomEnabled(true);
-        actionBar.setDisplayShowHomeEnabled(false);
-        actionBar.setDisplayShowTitleEnabled(false);
-    }*/
 }
