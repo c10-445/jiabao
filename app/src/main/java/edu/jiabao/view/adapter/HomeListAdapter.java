@@ -73,8 +73,8 @@ public class HomeListAdapter extends BaseAdapter {
         listItemView.background.setFocusableInTouchMode(false);
         listItemView.title.setFocusable(false);
         listItemView.title.setFocusableInTouchMode(false);
-        listItemView.switch1.setFocusable(false);
-        listItemView.switch1.setFocusableInTouchMode(false);
+        //listItemView.switch1.setFocusable(false);
+        //listItemView.switch1.setFocusableInTouchMode(false);
 
         return convertView;
     }

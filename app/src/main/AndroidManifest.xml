@@ -18,10 +18,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.ControlAirConditioning"
-            android:theme="@style/notitle"/>
-        <activity android:name=".view.ControlLightActivity"
-            android:theme="@style/notitle"></activity>
+        <activity
+            android:name=".view.ControlAirConditioning"
+            android:theme="@style/notitle" />
+        <activity
+            android:name=".view.ControlLightActivity"
+            android:theme="@style/notitle" />
+
+        <receiver android:name=".tool.AppWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/app_widget_info" />
+        </receiver>
     </application>
 
 </manifest>
