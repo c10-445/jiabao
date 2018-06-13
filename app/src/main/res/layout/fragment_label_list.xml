@@ -11,10 +11,13 @@
     <TextView
         android:id="@+id/tittle"
         android:layout_width="0dp"
-        android:layout_height="39dp"
-        android:background="@color/aqua"
+        android:layout_height="50dp"
+        android:background="@color/colorHoloBlue"
         android:gravity="center"
         android:text="标签"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/listView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,7 +26,11 @@
     <ListView
         android:id="@+id/listView"
         android:layout_width="wrap_content"
-        android:layout_height="498dp"
+        android:layout_height="0dp"
+        android:background="@color/background_huise"
+        android:divider="@android:drawable/list_selector_background"
+        android:dividerHeight="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tittle"></ListView>
@@ -31,10 +38,15 @@
     <Button
         android:id="@+id/userManagement"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="39dp"
-        android:layout_height="39dp"
-        android:background="@mipmap/ic_launcher"
+        android:layout_width="30dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/menu"
+        android:backgroundTint="@color/white"
         android:gravity="left"
+        app:layout_constraintBottom_toTopOf="@+id/listView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

@@ -1,90 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
-<edu.jiabao.tool.SwipeListLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+<edu.jiabao.tool.SwipeListLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_height="match_parent"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center_vertical">
-
-    <TextView
-        android:layout_height="match_parent"
-        android:layout_width="80dp"
-        android:id="@+id/tv_top"
-        android:text="置顶"
-        android:gravity="center"
-        android:background="#66ff0000"/>
-
-    <TextView
-        android:layout_height="match_parent"
-        android:layout_width="80dp"
-        android:id="@+id/tv_delete"
-        android:text="删除"
-        android:gravity="center"
-        android:background="#330000ff"/>
-
-</LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center_vertical"
-        android:background="#66ffffff"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
+        <TextView
+            android:id="@+id/tv_top"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="36dp"
+            android:background="@drawable/square_shape_sliver"
+            android:gravity="center"
+            android:text="置顶"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/home_background"
-                android:layout_width="362dp"
-                android:layout_height="@android:dimen/app_icon_size"
-                android:layout_weight="1"
-                android:background="@drawable/round_shape"
-                android:gravity="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+        <TextView
+            android:id="@+id/tv_delete"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="36dp"
+            android:background="@drawable/square_shape_sliver"
+            android:gravity="center"
+            android:text="删除"
+            app:layout_constraintStart_toEndOf="@+id/tv_top"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="wrap_content"
-                android:layout_height="21dp"
-                android:layout_marginEnd="202dp"
-                android:layout_marginStart="124dp"
-                android:layout_marginTop="16dp"
-                android:text="0/2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/home_background" />
+    </android.support.constraint.ConstraintLayout>
 
-            <TextView
-                android:id="@+id/home_item_title"
-                android:layout_width="wrap_content"
-                android:layout_height="21dp"
-                android:layout_marginStart="48dp"
-                android:layout_marginTop="14dp"
-                android:text="TextView"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
 
-            <Switch
-                android:id="@+id/switch1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="48dp"
-                android:layout_marginTop="14dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/home_background"
+            android:layout_width="0dp"
+            android:layout_height="90dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_weight="1"
+            android:background="@drawable/round_shape_16_blue"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="0/2"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/home_background"
+            app:layout_constraintStart_toEndOf="@+id/home_item_title"
+            app:layout_constraintTop_toTopOf="@+id/home_background" />
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/home_item_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="TextView"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="@+id/home_background"
+            app:layout_constraintStart_toStartOf="@+id/home_background"
+            app:layout_constraintTop_toTopOf="@+id/home_background"
+            app:layout_constraintVertical_bias="0.511" />
 
-</edu.jiabao.tool.SwipeListLayout >
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="60dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/square_shape_blue"
+            app:layout_constraintBottom_toBottomOf="@+id/home_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/home_background"
+            app:layout_constraintVertical_bias="0.553" />
+
+        <ImageButton
+            android:id="@+id/imageButton3"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="8dp"
+            android:adjustViewBounds="false"
+            android:background="@drawable/round_shape_999_blue"
+            android:padding="7dp"
+            android:scaleType="fitXY"
+            android:tint="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/home_background"
+            app:layout_constraintEnd_toEndOf="@+id/home_background"
+            app:layout_constraintTop_toTopOf="@+id/home_background"
+            app:srcCompat="@drawable/kaiguan" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</edu.jiabao.tool.SwipeListLayout>

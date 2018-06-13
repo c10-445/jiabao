@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorHoloBlue">@android:color/holo_blue_bright</color>
-    <color name="white">#FFFFFF</color>
+    <color name="white">#ffffff</color>
 
     <!-- 白色 -->
 
@@ -24,7 +24,7 @@
     <!-- 黄色 -->
 
 
-    <color name="snow">#FFFAFA</color>
+    <color name="snow">#fffafa</color>
 
     <!-- 雪白色 -->
 
@@ -59,7 +59,7 @@
     <!-- 番木色 -->
 
 
-    <color name="blanchedalmond">#FFEBCD</color>
+    <color name="blanchedalmond">#ffebcd</color>
 
     <!-- 白杏色 -->
 
@@ -154,7 +154,7 @@
     <!-- 红紫色 -->
 
 
-    <color name="red">#FF0000</color>
+    <color name="red">#ff0000</color>
 
     <!-- 红色 -->
 
@@ -184,7 +184,7 @@
     <!-- 鲜肉色 -->
 
 
-    <color name="ghostwhite">#F8F8FF</color>
+    <color name="ghostwhite">#f8f8ff</color>
 
     <!-- 幽灵白 -->
 
@@ -194,7 +194,7 @@
     <!-- 薄荷色 -->
 
 
-    <color name="whitesmoke">#F5F5F5</color>
+    <color name="whitesmoke">#f5f5f5</color>
 
     <!-- 烟白色 -->
 
@@ -214,7 +214,7 @@
     <!-- 沙褐色 -->
 
 
-    <color name="azure">#F0FFFF</color>
+    <color name="azure">#f0ffff</color>
 
     <!-- 天蓝色 -->
 
@@ -254,12 +254,12 @@
     <!-- 暗肉色 -->
 
 
-    <color name="lavender">#E6E6FA</color>
+    <color name="lavender">#e6e6fa</color>
 
     <!-- 淡紫色 -->
 
 
-    <color name="lightcyan">#E0FFFF</color>
+    <color name="lightcyan">#e0ffff</color>
 
     <!-- 亮青色 -->
 
@@ -274,7 +274,7 @@
     <!-- 洋李色 -->
 
 
-    <color name="gainsboro">#DCDCDC</color>
+    <color name="gainsboro">#dcdcdc</color>
 
     <!-- 淡灰色 -->
 
@@ -304,7 +304,7 @@
     <!-- 蓟色 -->
 
 
-    <color name="lightgray">#D3D3D3</color>
+    <color name="lightgray">#d3d3d3</color>
 
     <!-- 亮灰色 -->
 
@@ -339,7 +339,7 @@
     <!-- 中紫罗兰色 -->
 
 
-    <color name="silver">#C0C0C0</color>
+    <color name="silver">#c0c0c0</color>
 
     <!-- 银色 -->
 
@@ -394,12 +394,12 @@
     <!-- 亮蓝色 -->
 
 
-    <color name="darkgray">#A9A9A9</color>
+    <color name="darkgray">#a9a9a9</color>
 
     <!-- 暗灰色 -->
 
 
-    <color name="darkgrey">#A9A9A9</color>
+    <color name="darkgrey">#a9a9a9</color>
 
     <!-- 暗灰色 -->
 
@@ -439,7 +439,7 @@
     <!-- 亮绿色 -->
 
 
-    <color name="darkseagreen">#8FBC8F</color>
+    <color name="darkseagreen">#8fbc8f</color>
 
     <!-- 暗海兰色 -->
 
@@ -464,7 +464,7 @@
     <!-- 紫罗兰蓝色 -->
 
 
-    <color name="lightskyblue">#87CEFA</color>
+    <color name="lightskyblue">#87cefa</color>
 
     <!-- 亮天蓝色 -->
 
@@ -504,7 +504,7 @@
     <!-- 碧绿色 -->
 
 
-    <color name="chartreuse">#7FFF00</color>
+    <color name="chartreuse">#7fff00</color>
 
     <!-- 黄绿色 -->
 
@@ -564,12 +564,12 @@
     <!-- 中绿色 -->
 
 
-    <color name="cornflowerblue">#6495ED</color>
+    <color name="cornflowerblue">#6495ed</color>
 
     <!-- 菊兰色 -->
 
 
-    <color name="cadetblue">#5F9EA0</color>
+    <color name="cadetblue">#5f9ea0</color>
 
     <!-- 军兰色 -->
 
@@ -659,7 +659,7 @@
     <!-- 浅绿色 -->
 
 
-    <color name="cyan">#00FFFF</color>
+    <color name="cyan">#00ffff</color>
 
     <!-- 青色 -->
 
@@ -679,7 +679,7 @@
     <!-- 中春绿色 -->
 
 
-    <color name="darkturquoise">#00CED1</color>
+    <color name="darkturquoise">#00ced1</color>
 
     <!-- 暗宝石绿 -->
 
@@ -689,7 +689,7 @@
     <!-- 深天蓝色 -->
 
 
-    <color name="darkcyan">#008B8B</color>
+    <color name="darkcyan">#008b8b</color>
 
     <!-- 暗青色 -->
 
@@ -709,7 +709,7 @@
     <!-- 暗绿色 -->
 
 
-    <color name="blue">#0000FF</color>
+    <color name="blue">#0000ff</color>
 
     <!-- 蓝色 -->
 
@@ -730,6 +730,7 @@
 
 
     <color name="black">#000000</color>
+    <color name="background_huise">#ebebeb</color>
 
     <!-- 黑色 -->
 </resources>
