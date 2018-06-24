@@ -10,8 +10,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
 import edu.jiabao.R;
+import edu.jiabao.view.inteface.IMainView;
 
-public class MainActivity extends AppCompatActivity implements IMainView{
+public class MainActivity extends AppCompatActivity implements IMainView {
 
     private FragmentManager fragmentManager;
     private Fragment homeFragment;

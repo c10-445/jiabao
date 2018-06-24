@@ -2,23 +2,30 @@ package edu.jiabao.view;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
 import edu.jiabao.R;
+import edu.jiabao.presenter.HomePresenter;
 import edu.jiabao.view.adapter.HomeListAdapter;
+import edu.jiabao.view.inteface.IHomeView;
 
 
-public class homeFragment extends Fragment {
+public class homeFragment extends Fragment implements IHomeView {
+    HomePresenter homePresenter;
     Button userButton;
     DrawerLayout drawerLayout;
     ArrayList<String> list=new ArrayList<>();
@@ -53,21 +60,22 @@ public class homeFragment extends Fragment {
                 drawerLayout.openDrawer(Gravity.LEFT);
             }
         });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //我们需要的内容，跳转页面或显示详细信息
+                Log.d("ooo","213213");
+                        Fragment devices = new diviceFragment();
+                        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.add(R.id.fragment_layout, devices, "device");
+                        fragmentTransaction.hide(fragmentManager.findFragmentByTag("home")).show(devices);
+                        fragmentTransaction.commit();
+            }
+        });
     }
-/*
-    @Override
-    public void onListItemClick(ListView l, View v, int position, long id) {
-        Log.d("ooo","213213");
-        Fragment devices = new diviceFragment();
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.fragment_layout, devices, "device");
-        fragmentTransaction.hide(fragmentManager.findFragmentByTag("home")).show(devices);
-        fragmentTransaction.commit();
-        super.onListItemClick(l, v, position, id);
 
-
-    }*/
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
