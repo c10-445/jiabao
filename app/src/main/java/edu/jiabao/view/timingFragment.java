@@ -16,10 +16,13 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import edu.jiabao.R;
+import edu.jiabao.presenter.TimingPresenter;
 import edu.jiabao.view.adapter.TimingListAdapter;
+import edu.jiabao.view.inteface.ITimingView;
 
 
-public class timingFragment extends Fragment {
+public class timingFragment extends Fragment implements ITimingView {
+    TimingPresenter timingPresenter;
     ArrayList<String> list=new ArrayList<>();
     DrawerLayout drawerLayout;
     Button userButton;

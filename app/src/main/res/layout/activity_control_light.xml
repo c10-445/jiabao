@@ -8,7 +8,7 @@
     tools:context="edu.jiabao.view.ControlLightActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/switch_btn"
         android:layout_width="190dp"
         android:layout_height="80dp"
         android:layout_marginBottom="4dp"
@@ -29,10 +29,10 @@
         android:gravity="center"
         android:text="模式"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintBottom_toBottomOf="@+id/switch_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="@+id/textView" />
+        app:layout_constraintStart_toEndOf="@+id/switch_btn"
+        app:layout_constraintTop_toTopOf="@+id/switch_btn" />
 
     <TextView
         android:id="@+id/textView4"
@@ -95,7 +95,7 @@
         android:background="@drawable/light"
         android:textSize="84sp"
         android:textStyle="normal"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintBottom_toTopOf="@+id/switch_btn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.235" />
@@ -107,7 +107,7 @@
         android:layout_marginBottom="16dp"
         android:layout_marginStart="16dp"
         android:text="亮度"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintBottom_toTopOf="@+id/switch_btn"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -117,7 +117,7 @@
         android:layout_marginBottom="16dp"
         android:layout_marginStart="8dp"
         android:text="一档"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintBottom_toTopOf="@+id/switch_btn"
         app:layout_constraintStart_toEndOf="@+id/textView18" />
 
     <TextView
@@ -127,7 +127,7 @@
         android:layout_marginBottom="16dp"
         android:layout_marginStart="51dp"
         android:text="已开启3小时10分钟"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintBottom_toTopOf="@+id/switch_btn"
         app:layout_constraintStart_toEndOf="@+id/textView19" />
 
     <TextView
