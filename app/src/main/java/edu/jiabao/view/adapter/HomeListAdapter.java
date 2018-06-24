@@ -60,7 +60,7 @@ public class HomeListAdapter extends BaseAdapter {
             //获取控件对象
             listItemView.title = (TextView)convertView.findViewById(R.id.home_item_title);
             listItemView.background=(TextView)convertView.findViewById(R.id.home_background);
-            listItemView.switch1=convertView.findViewById(R.id.switch1);
+            //listItemView.switch1=convertView.findViewById(R.id.switch1);
             //设置控件集到convertView
             convertView.setTag(listItemView);
         }else {

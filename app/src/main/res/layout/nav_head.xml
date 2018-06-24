@@ -13,6 +13,6 @@
         android:layout_marginTop="24dp"
         android:text="沐风"
         android:textColor="#ffffff"
-        android:textSize="20sp" />
+        android:textSize="24sp" />
 
 </LinearLayout>
