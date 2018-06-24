@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="200dp"
-    android:background="@color/colorHoloBlue"
+    android:background="@color/mediumturquoise"
     android:gravity="center"
     android:orientation="vertical">
 
@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="沐风"
-        android:textColor="#ffffff"
-        android:textSize="24sp" />
+        android:textColor="@color/dimgrey"
+        android:textSize="30sp" />
 
 </LinearLayout>

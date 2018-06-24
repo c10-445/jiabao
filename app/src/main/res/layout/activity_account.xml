@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_huise"
+    android:orientation="vertical"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp">
+
+    <TextView
+        android:id="@+id/tittle"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:background="@color/colorHoloBlue"
+        android:gravity="center"
+        android:text="账号管理"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView29"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:background="@color/white"
+        android:gravity="left|center_vertical"
+        android:text="  查看历史消息"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="58dp" />
+
+    <TextView
+        android:id="@+id/textView30"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="4dp"
+        android:background="@color/white"
+        android:gravity="left|center_vertical"
+        android:text="  修改密码"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView29" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        android:tint="@color/darkgray"
+        app:layout_constraintBottom_toBottomOf="@+id/textView29"
+        app:layout_constraintEnd_toEndOf="@+id/textView29"
+        app:layout_constraintTop_toTopOf="@+id/textView29"
+        app:srcCompat="@drawable/arrow_right" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        android:tint="@color/darkgray"
+        app:layout_constraintBottom_toBottomOf="@+id/textView30"
+        app:layout_constraintEnd_toEndOf="@+id/textView30"
+        app:layout_constraintTop_toTopOf="@+id/textView30"
+        app:srcCompat="@drawable/arrow_right" />
+
+    <TextView
+        android:id="@+id/textView32"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/arrow"
+        app:layout_constraintStart_toStartOf="@+id/tittle"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#ff4081</color>
     <color name="colorHoloBlue">@android:color/holo_blue_bright</color>
     <color name="white">#ffffff</color>
 
@@ -124,7 +124,7 @@
     <!-- 珊瑚色 -->
 
 
-    <color name="hotpink">#FF69B4</color>
+    <color name="hotpink">#ff69b4</color>
 
     <!-- 热粉红色 -->
 
@@ -139,7 +139,7 @@
     <!-- 红橙色 -->
 
 
-    <color name="deeppink">#FF1493</color>
+    <color name="deeppink">#ff1493</color>
 
     <!-- 深粉红色 -->
 
@@ -234,7 +234,7 @@
     <!-- 黄褐色 -->
 
 
-    <color name="lightcoral">#F08080</color>
+    <color name="lightcoral">#f08080</color>
 
     <!-- 亮珊瑚色 -->
 
@@ -264,7 +264,7 @@
     <!-- 亮青色 -->
 
 
-    <color name="burlywood">#DEB887</color>
+    <color name="burlywood">#deb887</color>
 
     <!-- 实木色 -->
 
@@ -414,7 +414,7 @@
     <!-- 赭色 -->
 
 
-    <color name="darkorchid">#9932CC</color>
+    <color name="darkorchid">#9932cc</color>
 
     <!-- 暗紫色 -->
 
@@ -459,7 +459,7 @@
     <!-- 暗红色 -->
 
 
-    <color name="blueviolet">#8A2BE2</color>
+    <color name="blueviolet">#8a2be2</color>
 
     <!-- 紫罗兰蓝色 -->
 
@@ -559,7 +559,7 @@
     <!-- 暗灰色 -->
 
 
-    <color name="mediumaquamarine">#66CDAA</color>
+    <color name="mediumaquamarine">#66cdaa</color>
 
     <!-- 中绿色 -->
 
@@ -584,7 +584,7 @@
     <!-- 靛青色 -->
 
 
-    <color name="mediumturquoise">#48D1CC</color>
+    <color name="mediumturquoise">#48d1cc</color>
 
     <!-- 中绿宝石 -->
 
@@ -609,7 +609,7 @@
     <!-- 青绿色 -->
 
 
-    <color name="mediumseagreen">#3CB371</color>
+    <color name="mediumseagreen">#3cb371</color>
 
     <!-- 中海蓝 -->
 

@@ -66,7 +66,7 @@ public class homeFragment extends Fragment implements IHomeView {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //我们需要的内容，跳转页面或显示详细信息
                 Log.d("ooo","213213");
-                        Fragment devices = new diviceFragment();
+                        Fragment devices = new deviceFragment();
                         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                         fragmentTransaction.add(R.id.fragment_layout, devices, "device");

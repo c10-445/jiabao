@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edu.jiabao.tool.SwipeListLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:descendantFocusability="blocksDescendants">
+
+        <TextView
+            android:id="@+id/tv_top"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="36dp"
+            android:background="@drawable/square_shape_sliver"
+            android:gravity="center"
+            android:text="置顶"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_delete"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="36dp"
+            android:background="@drawable/square_shape_sliver"
+            android:gravity="center"
+            android:text="删除"
+            app:layout_constraintStart_toEndOf="@+id/tv_top"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/home_background"
+            android:layout_width="0dp"
+            android:layout_height="90dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_weight="1"
+            android:background="@color/lightcoral"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="60dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/square_shape_lightcoral"
+            app:layout_constraintBottom_toBottomOf="@+id/home_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/home_background"
+            app:layout_constraintVertical_bias="0.553" />
+
+        <ImageButton
+            android:id="@+id/imageButton3"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="8dp"
+            android:adjustViewBounds="false"
+            android:background="@drawable/round_shape_999_lightcoral"
+            android:padding="7dp"
+            android:scaleType="fitXY"
+            android:tint="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/home_background"
+            app:layout_constraintEnd_toEndOf="@+id/home_background"
+            app:layout_constraintTop_toTopOf="@+id/home_background"
+            app:srcCompat="@drawable/kaiguan" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginBottom="4dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:tint="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/home_background"
+            app:layout_constraintStart_toStartOf="@+id/home_background"
+            app:layout_constraintTop_toTopOf="@+id/home_background"
+            app:srcCompat="@drawable/kongtiao" />
+
+        <TextView
+            android:id="@+id/textView26"
+            android:layout_width="3dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/home_background"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="@+id/home_background" />
+
+        <TextView
+            android:id="@+id/textView27"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:text="空调一"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/home_background"
+            app:layout_constraintEnd_toStartOf="@+id/textView28"
+            app:layout_constraintStart_toEndOf="@+id/textView26"
+            app:layout_constraintTop_toTopOf="@+id/home_background" />
+
+        <TextView
+            android:id="@+id/textView28"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="8dp"
+            android:text="26℃"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/home_background"
+            app:layout_constraintEnd_toStartOf="@+id/imageButton3"
+            app:layout_constraintTop_toTopOf="@+id/home_background" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</edu.jiabao.tool.SwipeListLayout>
