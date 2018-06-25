@@ -38,7 +38,12 @@
                 android:resource="@xml/app_widget_info" />
         </receiver>
 
-        <activity android:name=".view.Account"></activity>
+        <activity android:name=".view.Account" />
+        <activity android:name=".view.HistoryActivity" />
+        <activity android:name=".view.ChangePasswordActivity" />
+        <activity android:name=".view.LoginActivity" />
+        <activity android:name=".view.RegisterActivity" />
+        <activity android:name=".view.NewOperationActivity"></activity>
     </application>
 
 </manifest>
