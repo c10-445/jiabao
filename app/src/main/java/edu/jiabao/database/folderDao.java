@@ -13,7 +13,7 @@ import org.greenrobot.greendao.database.DatabaseStatement;
 /** 
  * DAO for table "FOLDER".
 */
-public class folderDao extends AbstractDao<folder, Integer> {
+public class folderDao extends AbstractDao<folder, Long> {
 
     public static final String TABLENAME = "FOLDER";
 
@@ -22,12 +22,12 @@ public class folderDao extends AbstractDao<folder, Integer> {
      * Can be used for QueryBuilder and for referencing column names.
      */
     public static class Properties {
-        public final static Property Folder_id = new Property(0, int.class, "folder_id", true, "FOLDER_ID");
+        public final static Property Folder_id = new Property(0, Long.class, "folder_id", true, "_id");
         public final static Property Folder_name = new Property(1, String.class, "folder_name", false, "FOLDER_NAME");
-        public final static Property Folder_type = new Property(2, int.class, "folder_type", false, "FOLDER_TYPE");
-        public final static Property Folder_parents = new Property(3, int.class, "folder_parents", false, "FOLDER_PARENTS");
-        public final static Property Device_id = new Property(4, int.class, "device_id", false, "DEVICE_ID");
-        public final static Property User_id = new Property(5, int.class, "user_id", false, "USER_ID");
+        public final static Property Folder_type = new Property(2, Long.class, "folder_type", false, "FOLDER_TYPE");
+        public final static Property Folder_parents = new Property(3, Long.class, "folder_parents", false, "FOLDER_PARENTS");
+        public final static Property Device_id = new Property(4, Long.class, "device_id", false, "DEVICE_ID");
+        public final static Property User_id = new Property(5, Long.class, "user_id", false, "USER_ID");
     }
 
 
@@ -43,12 +43,12 @@ public class folderDao extends AbstractDao<folder, Integer> {
     public static void createTable(Database db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"FOLDER\" (" + //
-                "\"FOLDER_ID\" INTEGER PRIMARY KEY NOT NULL ," + // 0: folder_id
+                "\"_id\" INTEGER PRIMARY KEY ," + // 0: folder_id
                 "\"FOLDER_NAME\" TEXT," + // 1: folder_name
-                "\"FOLDER_TYPE\" INTEGER NOT NULL ," + // 2: folder_type
-                "\"FOLDER_PARENTS\" INTEGER NOT NULL ," + // 3: folder_parents
-                "\"DEVICE_ID\" INTEGER NOT NULL ," + // 4: device_id
-                "\"USER_ID\" INTEGER NOT NULL );"); // 5: user_id
+                "\"FOLDER_TYPE\" INTEGER," + // 2: folder_type
+                "\"FOLDER_PARENTS\" INTEGER," + // 3: folder_parents
+                "\"DEVICE_ID\" INTEGER," + // 4: device_id
+                "\"USER_ID\" INTEGER);"); // 5: user_id
     }
 
     /** Drops the underlying database table. */
@@ -60,68 +60,109 @@ public class folderDao extends AbstractDao<folder, Integer> {
     @Override
     protected final void bindValues(DatabaseStatement stmt, folder entity) {
         stmt.clearBindings();
-        stmt.bindLong(1, entity.getFolder_id());
+ 
+        Long folder_id = entity.getFolder_id();
+        if (folder_id != null) {
+            stmt.bindLong(1, folder_id);
+        }
  
         String folder_name = entity.getFolder_name();
         if (folder_name != null) {
             stmt.bindString(2, folder_name);
         }
-        stmt.bindLong(3, entity.getFolder_type());
-        stmt.bindLong(4, entity.getFolder_parents());
-        stmt.bindLong(5, entity.getDevice_id());
-        stmt.bindLong(6, entity.getUser_id());
+ 
+        Long folder_type = entity.getFolder_type();
+        if (folder_type != null) {
+            stmt.bindLong(3, folder_type);
+        }
+ 
+        Long folder_parents = entity.getFolder_parents();
+        if (folder_parents != null) {
+            stmt.bindLong(4, folder_parents);
+        }
+ 
+        Long device_id = entity.getDevice_id();
+        if (device_id != null) {
+            stmt.bindLong(5, device_id);
+        }
+ 
+        Long user_id = entity.getUser_id();
+        if (user_id != null) {
+            stmt.bindLong(6, user_id);
+        }
     }
 
     @Override
     protected final void bindValues(SQLiteStatement stmt, folder entity) {
         stmt.clearBindings();
-        stmt.bindLong(1, entity.getFolder_id());
+ 
+        Long folder_id = entity.getFolder_id();
+        if (folder_id != null) {
+            stmt.bindLong(1, folder_id);
+        }
  
         String folder_name = entity.getFolder_name();
         if (folder_name != null) {
             stmt.bindString(2, folder_name);
         }
-        stmt.bindLong(3, entity.getFolder_type());
-        stmt.bindLong(4, entity.getFolder_parents());
-        stmt.bindLong(5, entity.getDevice_id());
-        stmt.bindLong(6, entity.getUser_id());
+ 
+        Long folder_type = entity.getFolder_type();
+        if (folder_type != null) {
+            stmt.bindLong(3, folder_type);
+        }
+ 
+        Long folder_parents = entity.getFolder_parents();
+        if (folder_parents != null) {
+            stmt.bindLong(4, folder_parents);
+        }
+ 
+        Long device_id = entity.getDevice_id();
+        if (device_id != null) {
+            stmt.bindLong(5, device_id);
+        }
+ 
+        Long user_id = entity.getUser_id();
+        if (user_id != null) {
+            stmt.bindLong(6, user_id);
+        }
     }
 
     @Override
-    public Integer readKey(Cursor cursor, int offset) {
-        return cursor.getInt(offset + 0);
+    public Long readKey(Cursor cursor, int offset) {
+        return cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0);
     }    
 
     @Override
     public folder readEntity(Cursor cursor, int offset) {
         folder entity = new folder( //
-            cursor.getInt(offset + 0), // folder_id
+            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // folder_id
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // folder_name
-            cursor.getInt(offset + 2), // folder_type
-            cursor.getInt(offset + 3), // folder_parents
-            cursor.getInt(offset + 4), // device_id
-            cursor.getInt(offset + 5) // user_id
+            cursor.isNull(offset + 2) ? null : cursor.getLong(offset + 2), // folder_type
+            cursor.isNull(offset + 3) ? null : cursor.getLong(offset + 3), // folder_parents
+            cursor.isNull(offset + 4) ? null : cursor.getLong(offset + 4), // device_id
+            cursor.isNull(offset + 5) ? null : cursor.getLong(offset + 5) // user_id
         );
         return entity;
     }
      
     @Override
     public void readEntity(Cursor cursor, folder entity, int offset) {
-        entity.setFolder_id(cursor.getInt(offset + 0));
+        entity.setFolder_id(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setFolder_name(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
-        entity.setFolder_type(cursor.getInt(offset + 2));
-        entity.setFolder_parents(cursor.getInt(offset + 3));
-        entity.setDevice_id(cursor.getInt(offset + 4));
-        entity.setUser_id(cursor.getInt(offset + 5));
+        entity.setFolder_type(cursor.isNull(offset + 2) ? null : cursor.getLong(offset + 2));
+        entity.setFolder_parents(cursor.isNull(offset + 3) ? null : cursor.getLong(offset + 3));
+        entity.setDevice_id(cursor.isNull(offset + 4) ? null : cursor.getLong(offset + 4));
+        entity.setUser_id(cursor.isNull(offset + 5) ? null : cursor.getLong(offset + 5));
      }
     
     @Override
-    protected final Integer updateKeyAfterInsert(folder entity, long rowId) {
-        return entity.getFolder_id();
+    protected final Long updateKeyAfterInsert(folder entity, long rowId) {
+        entity.setFolder_id(rowId);
+        return rowId;
     }
     
     @Override
-    public Integer getKey(folder entity) {
+    public Long getKey(folder entity) {
         if(entity != null) {
             return entity.getFolder_id();
         } else {
@@ -131,7 +172,7 @@ public class folderDao extends AbstractDao<folder, Integer> {
 
     @Override
     public boolean hasKey(folder entity) {
-        throw new UnsupportedOperationException("Unsupported for entities with a non-null key");
+        return entity.getFolder_id() != null;
     }
 
     @Override

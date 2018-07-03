@@ -45,6 +45,10 @@ public class DeviceEntry {
 
     }
 
+    public static void addDevice(DeviceEntry deviceEntry){
+        devices.add(deviceEntry);
+    }
+
     public static void setDevices(List<DeviceEntry> devices) {
         DeviceEntry.devices = devices;
     }

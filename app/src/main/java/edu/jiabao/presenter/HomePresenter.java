@@ -69,7 +69,7 @@ public class HomePresenter {
     }
 
     public void deletePackage(){
-
+        packageModel.deletePackage(deviceModel);
     }
 
     public void showDevices(){

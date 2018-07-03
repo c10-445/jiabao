@@ -3,6 +3,8 @@ package edu.jiabao.modle;
 import com.google.gson.JsonArray;
 
 import edu.jiabao.database.folderDao;
+import edu.jiabao.entry.PackageEntry;
+import edu.jiabao.modle.inteface.IDeviceModel;
 import edu.jiabao.modle.inteface.IdevicePackageModel;
 
 public class ImpDecicePackageModel implements IdevicePackageModel {
@@ -12,13 +14,15 @@ public class ImpDecicePackageModel implements IdevicePackageModel {
     }
 
     @Override
-    public void addPackage() {
-
+    public void addPackage(PackageEntry entry) {
+        folderDao.insert(entry.toFolder());
+        PackageEntry.addPackage(entry);
     }
 
     @Override
-    public void deletePackage() {
-
+    public void deletePackage(IDeviceModel deviceModel,int packzge_id) {
+        folderDao.deleteByKey(new Long(packzge_id));
+        PackageEntry.deletePackage(packzge_id);
     }
 
     @Override
