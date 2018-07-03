@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/add_device"
+        android:title="添加设备"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/add_package"
+        android:title="添加设备夹"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/add_operator"
+        android:title="添加设备夹操作"
+        app:showAsAction="always" />
+</menu>

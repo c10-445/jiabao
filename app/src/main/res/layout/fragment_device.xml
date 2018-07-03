@@ -46,6 +46,7 @@
         android:background="@drawable/menu"
         android:backgroundTint="@color/white"
         android:gravity="left"
+        android:onClick="userManage"
         app:layout_constraintBottom_toTopOf="@+id/listView"
         app:layout_constraintStart_toStartOf="@+id/tittle"
         app:layout_constraintTop_toTopOf="@+id/tittle" />

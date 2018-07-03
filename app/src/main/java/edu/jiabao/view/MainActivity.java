@@ -1,26 +1,61 @@
 package edu.jiabao.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
+import edu.jiabao.ControlApplication;
 import edu.jiabao.R;
+import edu.jiabao.modle.ImpUserModel;
+import edu.jiabao.presenter.MainPresenter;
+import edu.jiabao.view.home.homeFragment;
 import edu.jiabao.view.inteface.IMainView;
+import edu.jiabao.view.label.labelFragment;
+import edu.jiabao.view.timing.timingFragment;
+import edu.jiabao.view.userManagement.AccountActivity;
+import edu.jiabao.view.userManagement.LoginActivity;
 
 public class MainActivity extends AppCompatActivity implements IMainView {
-
+    private MainPresenter presenter;
+    private int REQUEST_CODE_SCAN = 111;
     private FragmentManager fragmentManager;
     private Fragment homeFragment;
     private Fragment labelFragment;
     private Fragment timingFragment;
-    //private DrawerLayout drawerLayout;
+    private TextView name;
+    private View headView;
+    private NavigationView.OnNavigationItemSelectedListener leftNav=
+            new NavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    switch (item.getItemId()) {
+                        case R.id.userMag:
+                            presenter.accountManage();
+                            return true;
+                        case R.id.help:
+                            return true;
+                        case R.id.logout:
+                            presenter.logout();
+                            return true;
+                        case R.id.setting:
+                            presenter.settingManage();
+                            return true;
+                    }
+                    return false;
+                }
+            };
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+    private BottomNavigationView.OnNavigationItemSelectedListener bottonNav
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
@@ -39,6 +74,9 @@ public class MainActivity extends AppCompatActivity implements IMainView {
             return false;
         }
     };
+    public ControlApplication getApp(){
+        return (ControlApplication) getApplicationContext();
+    }
 
     void showFragment(String name){
         FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
@@ -72,6 +110,15 @@ public class MainActivity extends AppCompatActivity implements IMainView {
     }
 
     void init(){
+        NavigationView leftnavigation=(NavigationView) findViewById(R.id.nav);
+        leftnavigation.setNavigationItemSelectedListener(leftNav);
+
+        headView= leftnavigation.inflateHeaderView(R.layout.nav_head);
+        name=headView.findViewById(R.id.name);
+        setName();
+
+        presenter=new MainPresenter(this,getApp().getUserDao());
+
         homeFragment=new homeFragment();
         labelFragment=new labelFragment();
         timingFragment=new timingFragment();
@@ -85,9 +132,45 @@ public class MainActivity extends AppCompatActivity implements IMainView {
         fragmentTransaction.commit();
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        navigation.setOnNavigationItemSelectedListener(bottonNav);
         navigation.setSelectedItemId(R.id.navigation_home);;
         navigation.setBackgroundColor(getResources().getColor(R.color.colorHoloBlue));
         navigation.setDrawingCacheBackgroundColor(getResources().getColor(R.color.colorHoloBlue));
+
+
+        
+        ImpUserModel impUserModel=new ImpUserModel(getApp().getUserDao());
+        if(impUserModel.checkOnlineUser().intValue()==-1){
+            Intent intent=new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
+
+    }
+
+    public void setName(){
+        if(ImpUserModel.getUser().getUser_id()!=-1) {
+            Log.i("name:",ImpUserModel.getUser().getNick_name());
+            name.setText(ImpUserModel.getUser().getNick_name());
+        }
+    }
+
+    @Override
+    public void logout() {
+        Intent intent=new Intent(this, LoginActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public void accountManage() {
+        Intent intent=new Intent(this, AccountActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void settingManage() {
+
     }
 }

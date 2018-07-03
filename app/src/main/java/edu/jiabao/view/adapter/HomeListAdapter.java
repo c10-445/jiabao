@@ -6,28 +6,33 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
 import edu.jiabao.R;
+import edu.jiabao.presenter.HomePresenter;
 
 public class HomeListAdapter extends BaseAdapter {
     private Context context;                        //运行上下文
     private ArrayList<String> listItems;    //商品信息集合
     private LayoutInflater listContainer;           //视图容器
+    private HomePresenter presenter;
     public final class ListItemView{                //自定义控件集合
         public TextView title;
         public TextView background;
-        public Button switch1;
-        public TextView textView1;
+        public ImageButton btn_on;
+        public TextView device_num;
+        public Button delete;
     }
 
 
-    public HomeListAdapter(Context context, ArrayList<String> listItems) {
+    public HomeListAdapter(Context context, ArrayList<String> listItems,HomePresenter presenter) {
         this.context = context;
         listContainer = LayoutInflater.from(context);   //创建视图容器并设置上下文
         this.listItems = listItems;
+        this.presenter=presenter;
     }
 
     public int getCount() {
@@ -60,6 +65,9 @@ public class HomeListAdapter extends BaseAdapter {
             //获取控件对象
             listItemView.title = (TextView)convertView.findViewById(R.id.home_item_title);
             listItemView.background=(TextView)convertView.findViewById(R.id.home_background);
+            listItemView.btn_on=convertView.findViewById(R.id.btn_on);
+            listItemView.device_num=convertView.findViewById(R.id.device_name);
+            listItemView.delete=convertView.findViewById(R.id.tv_delete);
 
             //设置控件集到convertView
             convertView.setTag(listItemView);
@@ -69,13 +77,27 @@ public class HomeListAdapter extends BaseAdapter {
 
         //设置文字
         listItemView.title.setText((String) listItems.get(position));
-        listItemView.background.setFocusable(false);
-        listItemView.background.setFocusableInTouchMode(false);
-        listItemView.title.setFocusable(false);
-        listItemView.title.setFocusableInTouchMode(false);
-        //listItemView.switch1.setFocusable(false);
-        //listItemView.switch1.setFocusableInTouchMode(false);
 
+        listItemView.background.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                presenter.showDevices();
+            }
+        });
+
+        listItemView.btn_on.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                presenter.turnOnPackage();
+            }
+        });
+
+        listItemView.delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                presenter.deletePackage();
+            }
+        });
 
         return convertView;
     }

@@ -1,15 +1,15 @@
-package edu.jiabao.view;
+package edu.jiabao.view.home;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import edu.jiabao.R;
 
-public class ChangePasswordActivity extends AppCompatActivity {
+public class NewOperationActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_change_password);
+        setContentView(R.layout.activity_new_operation);
     }
 }

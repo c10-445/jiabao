@@ -1,31 +1,57 @@
 package edu.jiabao.presenter;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
+import android.util.Log;
 
+import org.xutils.common.Callback;
+
+import edu.jiabao.database.Device;
+import edu.jiabao.database.folderDao;
+import edu.jiabao.http.Http;
 import edu.jiabao.modle.ImpDecicePackageModel;
 import edu.jiabao.modle.inteface.IdevicePackageModel;
 import edu.jiabao.view.inteface.IAirControlView;
 
 public class AirControlPresenter {
+    int deviceId;
+    int userId;
+    Device device;
     IAirControlView view;
     IdevicePackageModel model;
 
-    public AirControlPresenter(IAirControlView view){
+    public AirControlPresenter(IAirControlView view,folderDao foldDao){
         super();
-        model=new ImpDecicePackageModel();
+        model=new ImpDecicePackageModel(foldDao);
         this.view=view;
+        deviceId=2;//ID需要初始化
+        userId=1;
     }
 
     public void turnSwitchBtn() {
-        JsonObject jsonObject=new JsonObject();
-        jsonObject.addProperty("deviceId","2");
-        jsonObject.addProperty("switchState",1);
-        jsonObject.addProperty("userId",1);
-        JsonArray jsonArray=new JsonArray();
-        jsonArray.add(jsonObject);
+        int switchState=1;
+        Http.turnSwitchBtn(deviceId,userId,switchState,new Callback.CommonCallback<String>() {
+            @Override
+            public void onSuccess(String result) {
+                Log.i("success", "ok!");
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+                ex.printStackTrace();
+            }
+
+            @Override
+            public void onCancelled(CancelledException cex) {
+                cex.printStackTrace();
+            }
+
+            @Override
+            public void onFinished() {
+
+            }
+        });
+
         view.turnSwitchBtn();
-        model.operateDevice(jsonArray);
+       // model.operateDevice(jsonArr);
     }
 
     public void turnModelBtn() {

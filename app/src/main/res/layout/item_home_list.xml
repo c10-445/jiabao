@@ -11,7 +11,7 @@
         android:layout_gravity="center_vertical"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:descendantFocusability="blocksDescendants">
+        >
 
         <TextView
             android:id="@+id/tv_top"
@@ -40,7 +40,8 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:descendantFocusability="blocksDescendants">
 
         <TextView
             android:id="@+id/home_background"
@@ -58,7 +59,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/txt_device_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -101,7 +102,7 @@
             app:layout_constraintVertical_bias="0.553" />
 
         <ImageButton
-            android:id="@+id/imageButton3"
+            android:id="@+id/btn_on"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginBottom="8dp"
@@ -115,7 +116,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/home_background"
             app:layout_constraintEnd_toEndOf="@+id/home_background"
             app:layout_constraintTop_toTopOf="@+id/home_background"
-            app:srcCompat="@drawable/kaiguan" />
+            app:srcCompat="@drawable/kaiguan"
+            android:focusable="false"/>
 
     </android.support.constraint.ConstraintLayout>
 

@@ -2,17 +2,17 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/wallet"
+        android:id="@+id/userMag"
 
         android:title="账号管理" />
     <item
-        android:id="@+id/photo"
+        android:id="@+id/setting"
         android:title="设置" />
     <item
-        android:id="@+id/dress"
+        android:id="@+id/help"
         android:title="帮助"/>
     <item
-        android:id="@+id/file"
+        android:id="@+id/logout"
         android:title="退出登陆"/>
 
 </menu>

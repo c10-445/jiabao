@@ -24,29 +24,32 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView29"
+        android:id="@+id/history_check"
         android:layout_width="0dp"
         android:layout_height="60dp"
+        android:layout_marginTop="8dp"
         android:background="@color/white"
         android:gravity="left|center_vertical"
+        android:onClick="historyCheck"
         android:text="  查看历史消息"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="58dp" />
+        app:layout_constraintTop_toBottomOf="@+id/tittle" />
 
     <TextView
-        android:id="@+id/textView30"
+        android:id="@+id/modify_password"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginTop="4dp"
         android:background="@color/white"
         android:gravity="left|center_vertical"
+        android:onClick="modifyPassword"
         android:text="  修改密码"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView29" />
+        app:layout_constraintTop_toBottomOf="@+id/history_check" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -56,9 +59,9 @@
         android:layout_marginEnd="16dp"
         android:layout_marginTop="8dp"
         android:tint="@color/darkgray"
-        app:layout_constraintBottom_toBottomOf="@+id/textView29"
-        app:layout_constraintEnd_toEndOf="@+id/textView29"
-        app:layout_constraintTop_toTopOf="@+id/textView29"
+        app:layout_constraintBottom_toBottomOf="@+id/history_check"
+        app:layout_constraintEnd_toEndOf="@+id/history_check"
+        app:layout_constraintTop_toTopOf="@+id/history_check"
         app:srcCompat="@drawable/arrow_right" />
 
     <ImageView
@@ -69,18 +72,19 @@
         android:layout_marginEnd="16dp"
         android:layout_marginTop="8dp"
         android:tint="@color/darkgray"
-        app:layout_constraintBottom_toBottomOf="@+id/textView30"
-        app:layout_constraintEnd_toEndOf="@+id/textView30"
-        app:layout_constraintTop_toTopOf="@+id/textView30"
+        app:layout_constraintBottom_toBottomOf="@+id/modify_password"
+        app:layout_constraintEnd_toEndOf="@+id/modify_password"
+        app:layout_constraintTop_toTopOf="@+id/modify_password"
         app:srcCompat="@drawable/arrow_right" />
 
     <TextView
-        android:id="@+id/textView32"
+        android:id="@+id/back"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/arrow"
+        android:onClick="back"
         app:layout_constraintStart_toStartOf="@+id/tittle"
         app:layout_constraintTop_toTopOf="parent" />
 

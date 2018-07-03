@@ -17,14 +17,17 @@ public class folder {
     private int folder_parents;
     @Property
     private int device_id;
-    @Generated(hash = 420436254)
+    @Property
+    private int user_id;
+    @Generated(hash = 1423037364)
     public folder(int folder_id, String folder_name, int folder_type,
-            int folder_parents, int device_id) {
+            int folder_parents, int device_id, int user_id) {
         this.folder_id = folder_id;
         this.folder_name = folder_name;
         this.folder_type = folder_type;
         this.folder_parents = folder_parents;
         this.device_id = device_id;
+        this.user_id = user_id;
     }
     @Generated(hash = 159136574)
     public folder() {
@@ -58,5 +61,11 @@ public class folder {
     }
     public void setDevice_id(int device_id) {
         this.device_id = device_id;
+    }
+    public int getUser_id() {
+        return this.user_id;
+    }
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 }

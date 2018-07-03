@@ -1,4 +1,4 @@
-package edu.jiabao.view;
+package edu.jiabao.view.timing;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 import edu.jiabao.R;
 import edu.jiabao.presenter.TimingPresenter;
+import edu.jiabao.view.MainActivity;
 import edu.jiabao.view.adapter.TimingListAdapter;
 import edu.jiabao.view.inteface.ITimingView;
 
@@ -56,7 +57,7 @@ public class timingFragment extends Fragment implements ITimingView {
         userButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                drawerLayout.openDrawer(Gravity.LEFT);
+                checkUserMsg();
             }
         });
         textView= view.findViewById(R.id.tittle);
@@ -68,6 +69,12 @@ public class timingFragment extends Fragment implements ITimingView {
                 Log.i("lihui","ok");
             }
         });
+    }
+
+    public void checkUserMsg() {
+        MainActivity activity=  (MainActivity)getActivity();
+        activity.setName();
+        drawerLayout.openDrawer(Gravity.LEFT);
     }
 
 

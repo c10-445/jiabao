@@ -13,7 +13,7 @@ import org.greenrobot.greendao.database.DatabaseStatement;
 /** 
  * DAO for table "DEVICE".
 */
-public class DeviceDao extends AbstractDao<Device, Integer> {
+public class DeviceDao extends AbstractDao<Device, Long> {
 
     public static final String TABLENAME = "DEVICE";
 
@@ -22,10 +22,13 @@ public class DeviceDao extends AbstractDao<Device, Integer> {
      * Can be used for QueryBuilder and for referencing column names.
      */
     public static class Properties {
-        public final static Property Device_id = new Property(0, int.class, "device_id", true, "DEVICE_ID");
+        public final static Property Device_id = new Property(0, Long.class, "device_id", true, "_id");
         public final static Property Turn_on = new Property(1, boolean.class, "turn_on", false, "TURN_ON");
-        public final static Property Degree = new Property(2, int.class, "degree", false, "DEGREE");
-        public final static Property Pattern = new Property(3, int.class, "pattern", false, "PATTERN");
+        public final static Property Degree = new Property(2, Long.class, "degree", false, "DEGREE");
+        public final static Property Run_model = new Property(3, Long.class, "run_model", false, "RUN_MODEL");
+        public final static Property Fan_state = new Property(4, Long.class, "fan_state", false, "FAN_STATE");
+        public final static Property Wind_size = new Property(5, Long.class, "wind_size", false, "WIND_SIZE");
+        public final static Property User_id = new Property(6, Long.class, "user_id", false, "USER_ID");
     }
 
 
@@ -41,10 +44,13 @@ public class DeviceDao extends AbstractDao<Device, Integer> {
     public static void createTable(Database db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"DEVICE\" (" + //
-                "\"DEVICE_ID\" INTEGER PRIMARY KEY NOT NULL ," + // 0: device_id
+                "\"_id\" INTEGER PRIMARY KEY ," + // 0: device_id
                 "\"TURN_ON\" INTEGER NOT NULL ," + // 1: turn_on
-                "\"DEGREE\" INTEGER NOT NULL ," + // 2: degree
-                "\"PATTERN\" INTEGER NOT NULL );"); // 3: pattern
+                "\"DEGREE\" INTEGER," + // 2: degree
+                "\"RUN_MODEL\" INTEGER," + // 3: run_model
+                "\"FAN_STATE\" INTEGER," + // 4: fan_state
+                "\"WIND_SIZE\" INTEGER," + // 5: wind_size
+                "\"USER_ID\" INTEGER);"); // 6: user_id
     }
 
     /** Drops the underlying database table. */
@@ -56,52 +62,113 @@ public class DeviceDao extends AbstractDao<Device, Integer> {
     @Override
     protected final void bindValues(DatabaseStatement stmt, Device entity) {
         stmt.clearBindings();
-        stmt.bindLong(1, entity.getDevice_id());
+ 
+        Long device_id = entity.getDevice_id();
+        if (device_id != null) {
+            stmt.bindLong(1, device_id);
+        }
         stmt.bindLong(2, entity.getTurn_on() ? 1L: 0L);
-        stmt.bindLong(3, entity.getDegree());
-        stmt.bindLong(4, entity.getPattern());
+ 
+        Long degree = entity.getDegree();
+        if (degree != null) {
+            stmt.bindLong(3, degree);
+        }
+ 
+        Long run_model = entity.getRun_model();
+        if (run_model != null) {
+            stmt.bindLong(4, run_model);
+        }
+ 
+        Long fan_state = entity.getFan_state();
+        if (fan_state != null) {
+            stmt.bindLong(5, fan_state);
+        }
+ 
+        Long wind_size = entity.getWind_size();
+        if (wind_size != null) {
+            stmt.bindLong(6, wind_size);
+        }
+ 
+        Long user_id = entity.getUser_id();
+        if (user_id != null) {
+            stmt.bindLong(7, user_id);
+        }
     }
 
     @Override
     protected final void bindValues(SQLiteStatement stmt, Device entity) {
         stmt.clearBindings();
-        stmt.bindLong(1, entity.getDevice_id());
+ 
+        Long device_id = entity.getDevice_id();
+        if (device_id != null) {
+            stmt.bindLong(1, device_id);
+        }
         stmt.bindLong(2, entity.getTurn_on() ? 1L: 0L);
-        stmt.bindLong(3, entity.getDegree());
-        stmt.bindLong(4, entity.getPattern());
+ 
+        Long degree = entity.getDegree();
+        if (degree != null) {
+            stmt.bindLong(3, degree);
+        }
+ 
+        Long run_model = entity.getRun_model();
+        if (run_model != null) {
+            stmt.bindLong(4, run_model);
+        }
+ 
+        Long fan_state = entity.getFan_state();
+        if (fan_state != null) {
+            stmt.bindLong(5, fan_state);
+        }
+ 
+        Long wind_size = entity.getWind_size();
+        if (wind_size != null) {
+            stmt.bindLong(6, wind_size);
+        }
+ 
+        Long user_id = entity.getUser_id();
+        if (user_id != null) {
+            stmt.bindLong(7, user_id);
+        }
     }
 
     @Override
-    public Integer readKey(Cursor cursor, int offset) {
-        return cursor.getInt(offset + 0);
+    public Long readKey(Cursor cursor, int offset) {
+        return cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0);
     }    
 
     @Override
     public Device readEntity(Cursor cursor, int offset) {
         Device entity = new Device( //
-            cursor.getInt(offset + 0), // device_id
+            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // device_id
             cursor.getShort(offset + 1) != 0, // turn_on
-            cursor.getInt(offset + 2), // degree
-            cursor.getInt(offset + 3) // pattern
+            cursor.isNull(offset + 2) ? null : cursor.getLong(offset + 2), // degree
+            cursor.isNull(offset + 3) ? null : cursor.getLong(offset + 3), // run_model
+            cursor.isNull(offset + 4) ? null : cursor.getLong(offset + 4), // fan_state
+            cursor.isNull(offset + 5) ? null : cursor.getLong(offset + 5), // wind_size
+            cursor.isNull(offset + 6) ? null : cursor.getLong(offset + 6) // user_id
         );
         return entity;
     }
      
     @Override
     public void readEntity(Cursor cursor, Device entity, int offset) {
-        entity.setDevice_id(cursor.getInt(offset + 0));
+        entity.setDevice_id(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setTurn_on(cursor.getShort(offset + 1) != 0);
-        entity.setDegree(cursor.getInt(offset + 2));
-        entity.setPattern(cursor.getInt(offset + 3));
+        entity.setDegree(cursor.isNull(offset + 2) ? null : cursor.getLong(offset + 2));
+        entity.setRun_model(cursor.isNull(offset + 3) ? null : cursor.getLong(offset + 3));
+        entity.setFan_state(cursor.isNull(offset + 4) ? null : cursor.getLong(offset + 4));
+        entity.setWind_size(cursor.isNull(offset + 5) ? null : cursor.getLong(offset + 5));
+        entity.setUser_id(cursor.isNull(offset + 6) ? null : cursor.getLong(offset + 6));
      }
     
     @Override
-    protected final Integer updateKeyAfterInsert(Device entity, long rowId) {
-        return entity.getDevice_id();
+    protected final Long updateKeyAfterInsert(Device entity, long rowId) {
+        entity.setDevice_id(rowId);
+        return rowId;
     }
     
     @Override
-    public Integer getKey(Device entity) {
+    public Long getKey(Device entity) {
         if(entity != null) {
             return entity.getDevice_id();
         } else {
@@ -111,7 +178,7 @@ public class DeviceDao extends AbstractDao<Device, Integer> {
 
     @Override
     public boolean hasKey(Device entity) {
-        throw new UnsupportedOperationException("Unsupported for entities with a non-null key");
+        return entity.getDevice_id() != null;
     }
 
     @Override

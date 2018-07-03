@@ -16,14 +16,17 @@ public class Operator {
     private String operator_name;
     @Property
     private int folder_id;
+    @Property
+    private int user_id;
     @Convert(columnType = String.class, converter = StringConverter.class)
     private List<String> content_list;
-    @Generated(hash = 461284131)
+    @Generated(hash = 1366637317)
     public Operator(int operator_id, String operator_name, int folder_id,
-            List<String> content_list) {
+            int user_id, List<String> content_list) {
         this.operator_id = operator_id;
         this.operator_name = operator_name;
         this.folder_id = folder_id;
+        this.user_id = user_id;
         this.content_list = content_list;
     }
     @Generated(hash = 1412551650)
@@ -52,6 +55,12 @@ public class Operator {
     }
     public void setContent_list(List<String> content_list) {
         this.content_list = content_list;
+    }
+    public int getUser_id() {
+        return this.user_id;
+    }
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 
 }

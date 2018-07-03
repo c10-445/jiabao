@@ -27,6 +27,7 @@ public class LabelDao extends AbstractDao<Label, Integer> {
         public final static Property Label_type = new Property(2, int.class, "label_type", false, "LABEL_TYPE");
         public final static Property Label_parents = new Property(3, int.class, "label_parents", false, "LABEL_PARENTS");
         public final static Property Device_id = new Property(4, int.class, "device_id", false, "DEVICE_ID");
+        public final static Property User_id = new Property(5, int.class, "user_id", false, "USER_ID");
     }
 
 
@@ -46,7 +47,8 @@ public class LabelDao extends AbstractDao<Label, Integer> {
                 "\"LABEL_NAME\" TEXT," + // 1: label_name
                 "\"LABEL_TYPE\" INTEGER NOT NULL ," + // 2: label_type
                 "\"LABEL_PARENTS\" INTEGER NOT NULL ," + // 3: label_parents
-                "\"DEVICE_ID\" INTEGER NOT NULL );"); // 4: device_id
+                "\"DEVICE_ID\" INTEGER NOT NULL ," + // 4: device_id
+                "\"USER_ID\" INTEGER NOT NULL );"); // 5: user_id
     }
 
     /** Drops the underlying database table. */
@@ -67,6 +69,7 @@ public class LabelDao extends AbstractDao<Label, Integer> {
         stmt.bindLong(3, entity.getLabel_type());
         stmt.bindLong(4, entity.getLabel_parents());
         stmt.bindLong(5, entity.getDevice_id());
+        stmt.bindLong(6, entity.getUser_id());
     }
 
     @Override
@@ -81,6 +84,7 @@ public class LabelDao extends AbstractDao<Label, Integer> {
         stmt.bindLong(3, entity.getLabel_type());
         stmt.bindLong(4, entity.getLabel_parents());
         stmt.bindLong(5, entity.getDevice_id());
+        stmt.bindLong(6, entity.getUser_id());
     }
 
     @Override
@@ -95,7 +99,8 @@ public class LabelDao extends AbstractDao<Label, Integer> {
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // label_name
             cursor.getInt(offset + 2), // label_type
             cursor.getInt(offset + 3), // label_parents
-            cursor.getInt(offset + 4) // device_id
+            cursor.getInt(offset + 4), // device_id
+            cursor.getInt(offset + 5) // user_id
         );
         return entity;
     }
@@ -107,6 +112,7 @@ public class LabelDao extends AbstractDao<Label, Integer> {
         entity.setLabel_type(cursor.getInt(offset + 2));
         entity.setLabel_parents(cursor.getInt(offset + 3));
         entity.setDevice_id(cursor.getInt(offset + 4));
+        entity.setUser_id(cursor.getInt(offset + 5));
      }
     
     @Override

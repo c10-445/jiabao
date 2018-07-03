@@ -40,10 +40,11 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:descendantFocusability="blocksDescendants">
 
         <TextView
-            android:id="@+id/home_background"
+            android:id="@+id/background_txt"
             android:layout_width="0dp"
             android:layout_height="90dp"
             android:layout_marginEnd="8dp"
@@ -64,13 +65,13 @@
             android:layout_marginBottom="20dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/square_shape_lightcoral"
-            app:layout_constraintBottom_toBottomOf="@+id/home_background"
+            app:layout_constraintBottom_toBottomOf="@+id/background_txt"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/home_background"
+            app:layout_constraintTop_toTopOf="@+id/background_txt"
             app:layout_constraintVertical_bias="0.553" />
 
         <ImageButton
-            android:id="@+id/imageButton3"
+            android:id="@+id/turn_on_button"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginBottom="8dp"
@@ -81,9 +82,10 @@
             android:padding="7dp"
             android:scaleType="fitXY"
             android:tint="@color/white"
-            app:layout_constraintBottom_toBottomOf="@+id/home_background"
-            app:layout_constraintEnd_toEndOf="@+id/home_background"
-            app:layout_constraintTop_toTopOf="@+id/home_background"
+            app:layout_constraintBottom_toBottomOf="@+id/background_txt"
+            app:layout_constraintEnd_toEndOf="@+id/background_txt"
+            app:layout_constraintTop_toTopOf="@+id/background_txt"
+            android:focusable="false"
             app:srcCompat="@drawable/kaiguan" />
 
         <ImageView
@@ -94,9 +96,9 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
             android:tint="@color/white"
-            app:layout_constraintBottom_toBottomOf="@+id/home_background"
-            app:layout_constraintStart_toStartOf="@+id/home_background"
-            app:layout_constraintTop_toTopOf="@+id/home_background"
+            app:layout_constraintBottom_toBottomOf="@+id/background_txt"
+            app:layout_constraintStart_toStartOf="@+id/background_txt"
+            app:layout_constraintTop_toTopOf="@+id/background_txt"
             app:srcCompat="@drawable/kongtiao" />
 
         <TextView
@@ -107,12 +109,12 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
             android:background="@color/white"
-            app:layout_constraintBottom_toBottomOf="@+id/home_background"
+            app:layout_constraintBottom_toBottomOf="@+id/background_txt"
             app:layout_constraintStart_toEndOf="@+id/imageView"
-            app:layout_constraintTop_toTopOf="@+id/home_background" />
+            app:layout_constraintTop_toTopOf="@+id/background_txt" />
 
         <TextView
-            android:id="@+id/textView27"
+            android:id="@+id/device_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -122,13 +124,13 @@
             android:text="空调一"
             android:textColor="@color/white"
             android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="@+id/home_background"
-            app:layout_constraintEnd_toStartOf="@+id/textView28"
+            app:layout_constraintBottom_toBottomOf="@+id/background_txt"
+            app:layout_constraintEnd_toStartOf="@+id/tem_text"
             app:layout_constraintStart_toEndOf="@+id/textView26"
-            app:layout_constraintTop_toTopOf="@+id/home_background" />
+            app:layout_constraintTop_toTopOf="@+id/background_txt" />
 
         <TextView
-            android:id="@+id/textView28"
+            android:id="@+id/tem_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -137,9 +139,9 @@
             android:text="26℃"
             android:textColor="@color/white"
             android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="@+id/home_background"
-            app:layout_constraintEnd_toStartOf="@+id/imageButton3"
-            app:layout_constraintTop_toTopOf="@+id/home_background" />
+            app:layout_constraintBottom_toBottomOf="@+id/background_txt"
+            app:layout_constraintEnd_toStartOf="@+id/turn_on_button"
+            app:layout_constraintTop_toTopOf="@+id/background_txt" />
 
     </android.support.constraint.ConstraintLayout>
 

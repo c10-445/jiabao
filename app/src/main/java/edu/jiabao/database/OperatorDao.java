@@ -27,7 +27,8 @@ public class OperatorDao extends AbstractDao<Operator, Integer> {
         public final static Property Operator_id = new Property(0, int.class, "operator_id", true, "OPERATOR_ID");
         public final static Property Operator_name = new Property(1, String.class, "operator_name", false, "OPERATOR_NAME");
         public final static Property Folder_id = new Property(2, int.class, "folder_id", false, "FOLDER_ID");
-        public final static Property Content_list = new Property(3, String.class, "content_list", false, "CONTENT_LIST");
+        public final static Property User_id = new Property(3, int.class, "user_id", false, "USER_ID");
+        public final static Property Content_list = new Property(4, String.class, "content_list", false, "CONTENT_LIST");
     }
 
     private final StringConverter content_listConverter = new StringConverter();
@@ -47,7 +48,8 @@ public class OperatorDao extends AbstractDao<Operator, Integer> {
                 "\"OPERATOR_ID\" INTEGER PRIMARY KEY NOT NULL ," + // 0: operator_id
                 "\"OPERATOR_NAME\" TEXT," + // 1: operator_name
                 "\"FOLDER_ID\" INTEGER NOT NULL ," + // 2: folder_id
-                "\"CONTENT_LIST\" TEXT);"); // 3: content_list
+                "\"USER_ID\" INTEGER NOT NULL ," + // 3: user_id
+                "\"CONTENT_LIST\" TEXT);"); // 4: content_list
     }
 
     /** Drops the underlying database table. */
@@ -66,10 +68,11 @@ public class OperatorDao extends AbstractDao<Operator, Integer> {
             stmt.bindString(2, operator_name);
         }
         stmt.bindLong(3, entity.getFolder_id());
+        stmt.bindLong(4, entity.getUser_id());
  
         List content_list = entity.getContent_list();
         if (content_list != null) {
-            stmt.bindString(4, content_listConverter.convertToDatabaseValue(content_list));
+            stmt.bindString(5, content_listConverter.convertToDatabaseValue(content_list));
         }
     }
 
@@ -83,10 +86,11 @@ public class OperatorDao extends AbstractDao<Operator, Integer> {
             stmt.bindString(2, operator_name);
         }
         stmt.bindLong(3, entity.getFolder_id());
+        stmt.bindLong(4, entity.getUser_id());
  
         List content_list = entity.getContent_list();
         if (content_list != null) {
-            stmt.bindString(4, content_listConverter.convertToDatabaseValue(content_list));
+            stmt.bindString(5, content_listConverter.convertToDatabaseValue(content_list));
         }
     }
 
@@ -101,7 +105,8 @@ public class OperatorDao extends AbstractDao<Operator, Integer> {
             cursor.getInt(offset + 0), // operator_id
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // operator_name
             cursor.getInt(offset + 2), // folder_id
-            cursor.isNull(offset + 3) ? null : content_listConverter.convertToEntityProperty(cursor.getString(offset + 3)) // content_list
+            cursor.getInt(offset + 3), // user_id
+            cursor.isNull(offset + 4) ? null : content_listConverter.convertToEntityProperty(cursor.getString(offset + 4)) // content_list
         );
         return entity;
     }
@@ -111,7 +116,8 @@ public class OperatorDao extends AbstractDao<Operator, Integer> {
         entity.setOperator_id(cursor.getInt(offset + 0));
         entity.setOperator_name(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
         entity.setFolder_id(cursor.getInt(offset + 2));
-        entity.setContent_list(cursor.isNull(offset + 3) ? null : content_listConverter.convertToEntityProperty(cursor.getString(offset + 3)));
+        entity.setUser_id(cursor.getInt(offset + 3));
+        entity.setContent_list(cursor.isNull(offset + 4) ? null : content_listConverter.convertToEntityProperty(cursor.getString(offset + 4)));
      }
     
     @Override

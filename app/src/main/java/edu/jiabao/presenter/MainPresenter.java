@@ -1,15 +1,30 @@
 package edu.jiabao.presenter;
 
-import edu.jiabao.modle.inteface.IMainModel;
-import edu.jiabao.modle.MainModel;
+import edu.jiabao.database.UserDao;
+import edu.jiabao.modle.ImpUserModel;
+import edu.jiabao.modle.inteface.IuserModel;
 import edu.jiabao.view.inteface.IMainView;
 
 public class MainPresenter {
     IMainView view;
-    IMainModel model;
+    IuserModel userModel;
 
-    public MainPresenter(IMainView mainView){
+
+    public MainPresenter(IMainView mainView, UserDao userDao){
         view=mainView;
-        model=new MainModel();
+        userModel=new ImpUserModel(userDao);
+    }
+
+    public void logout(){
+        userModel.logout();
+        view.logout();
+    }
+
+    public void settingManage(){
+        view.settingManage();
+    }
+
+    public void accountManage(){
+        view.accountManage();
     }
 }

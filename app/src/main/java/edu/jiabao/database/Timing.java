@@ -2,12 +2,12 @@ package edu.jiabao.database;
 
 import org.greenrobot.greendao.annotation.Convert;
 import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Property;
 
 import java.util.Date;
 import java.util.List;
-import org.greenrobot.greendao.annotation.Generated;
 
 @Entity
 public class Timing {
@@ -19,17 +19,20 @@ public class Timing {
     private int Timing_type;
     @Property
     private int device_id;
+    @Property
+    private int user_id;
     @Convert(columnType = String.class, converter = StringConverter.class)
     private List<String> operator_list;
     @Property
     private Date time;
-    @Generated(hash = 918883012)
+    @Generated(hash = 1437841724)
     public Timing(int timing_id, String timing_name, int Timing_type, int device_id,
-            List<String> operator_list, Date time) {
+            int user_id, List<String> operator_list, Date time) {
         this.timing_id = timing_id;
         this.timing_name = timing_name;
         this.Timing_type = Timing_type;
         this.device_id = device_id;
+        this.user_id = user_id;
         this.operator_list = operator_list;
         this.time = time;
     }
@@ -71,5 +74,11 @@ public class Timing {
     }
     public void setTime(Date time) {
         this.time = time;
+    }
+    public int getUser_id() {
+        return this.user_id;
+    }
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 }

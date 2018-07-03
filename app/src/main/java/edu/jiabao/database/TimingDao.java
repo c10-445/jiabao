@@ -28,8 +28,9 @@ public class TimingDao extends AbstractDao<Timing, Integer> {
         public final static Property Timing_name = new Property(1, String.class, "timing_name", false, "TIMING_NAME");
         public final static Property Timing_type = new Property(2, int.class, "Timing_type", false, "TIMING_TYPE");
         public final static Property Device_id = new Property(3, int.class, "device_id", false, "DEVICE_ID");
-        public final static Property Operator_list = new Property(4, String.class, "operator_list", false, "OPERATOR_LIST");
-        public final static Property Time = new Property(5, java.util.Date.class, "time", false, "TIME");
+        public final static Property User_id = new Property(4, int.class, "user_id", false, "USER_ID");
+        public final static Property Operator_list = new Property(5, String.class, "operator_list", false, "OPERATOR_LIST");
+        public final static Property Time = new Property(6, java.util.Date.class, "time", false, "TIME");
     }
 
     private final StringConverter operator_listConverter = new StringConverter();
@@ -50,8 +51,9 @@ public class TimingDao extends AbstractDao<Timing, Integer> {
                 "\"TIMING_NAME\" TEXT," + // 1: timing_name
                 "\"TIMING_TYPE\" INTEGER NOT NULL ," + // 2: Timing_type
                 "\"DEVICE_ID\" INTEGER NOT NULL ," + // 3: device_id
-                "\"OPERATOR_LIST\" TEXT," + // 4: operator_list
-                "\"TIME\" INTEGER);"); // 5: time
+                "\"USER_ID\" INTEGER NOT NULL ," + // 4: user_id
+                "\"OPERATOR_LIST\" TEXT," + // 5: operator_list
+                "\"TIME\" INTEGER);"); // 6: time
     }
 
     /** Drops the underlying database table. */
@@ -71,15 +73,16 @@ public class TimingDao extends AbstractDao<Timing, Integer> {
         }
         stmt.bindLong(3, entity.getTiming_type());
         stmt.bindLong(4, entity.getDevice_id());
+        stmt.bindLong(5, entity.getUser_id());
  
         List operator_list = entity.getOperator_list();
         if (operator_list != null) {
-            stmt.bindString(5, operator_listConverter.convertToDatabaseValue(operator_list));
+            stmt.bindString(6, operator_listConverter.convertToDatabaseValue(operator_list));
         }
  
         java.util.Date time = entity.getTime();
         if (time != null) {
-            stmt.bindLong(6, time.getTime());
+            stmt.bindLong(7, time.getTime());
         }
     }
 
@@ -94,15 +97,16 @@ public class TimingDao extends AbstractDao<Timing, Integer> {
         }
         stmt.bindLong(3, entity.getTiming_type());
         stmt.bindLong(4, entity.getDevice_id());
+        stmt.bindLong(5, entity.getUser_id());
  
         List operator_list = entity.getOperator_list();
         if (operator_list != null) {
-            stmt.bindString(5, operator_listConverter.convertToDatabaseValue(operator_list));
+            stmt.bindString(6, operator_listConverter.convertToDatabaseValue(operator_list));
         }
  
         java.util.Date time = entity.getTime();
         if (time != null) {
-            stmt.bindLong(6, time.getTime());
+            stmt.bindLong(7, time.getTime());
         }
     }
 
@@ -118,8 +122,9 @@ public class TimingDao extends AbstractDao<Timing, Integer> {
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // timing_name
             cursor.getInt(offset + 2), // Timing_type
             cursor.getInt(offset + 3), // device_id
-            cursor.isNull(offset + 4) ? null : operator_listConverter.convertToEntityProperty(cursor.getString(offset + 4)), // operator_list
-            cursor.isNull(offset + 5) ? null : new java.util.Date(cursor.getLong(offset + 5)) // time
+            cursor.getInt(offset + 4), // user_id
+            cursor.isNull(offset + 5) ? null : operator_listConverter.convertToEntityProperty(cursor.getString(offset + 5)), // operator_list
+            cursor.isNull(offset + 6) ? null : new java.util.Date(cursor.getLong(offset + 6)) // time
         );
         return entity;
     }
@@ -130,8 +135,9 @@ public class TimingDao extends AbstractDao<Timing, Integer> {
         entity.setTiming_name(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
         entity.setTiming_type(cursor.getInt(offset + 2));
         entity.setDevice_id(cursor.getInt(offset + 3));
-        entity.setOperator_list(cursor.isNull(offset + 4) ? null : operator_listConverter.convertToEntityProperty(cursor.getString(offset + 4)));
-        entity.setTime(cursor.isNull(offset + 5) ? null : new java.util.Date(cursor.getLong(offset + 5)));
+        entity.setUser_id(cursor.getInt(offset + 4));
+        entity.setOperator_list(cursor.isNull(offset + 5) ? null : operator_listConverter.convertToEntityProperty(cursor.getString(offset + 5)));
+        entity.setTime(cursor.isNull(offset + 6) ? null : new java.util.Date(cursor.getLong(offset + 6)));
      }
     
     @Override
