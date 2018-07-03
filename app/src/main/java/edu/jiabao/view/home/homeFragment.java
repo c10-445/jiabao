@@ -15,6 +15,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
@@ -46,6 +47,7 @@ public class homeFragment extends Fragment implements IHomeView {
     TextView moreButton;
     DrawerLayout drawerLayout;
     ArrayList<String> list=new ArrayList<>();
+    public static homeFragment instance;
 
     public ControlApplication getApp(){
         return (ControlApplication) getActivity().getApplicationContext();
@@ -80,6 +82,8 @@ public class homeFragment extends Fragment implements IHomeView {
             }
         });
 
+        instance=this;
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -113,7 +117,14 @@ public class homeFragment extends Fragment implements IHomeView {
                                 homePresenter.showSwipWindow();
                                 break;
                             case R.id.add_package:
+                                //弹窗并将界面变暗
+                                Intent i=new Intent(getActivity(),NewPackActivity.class);
+                                startActivity(i);
                                 homePresenter.addPackage();
+                                WindowManager.LayoutParams lp=getActivity().getWindow().getAttributes();
+                                lp.alpha = 0.5f;
+                                lp.dimAmount = 0.5f;
+                                getActivity().getWindow().setAttributes(lp);
                         }
                         return false;
                     }

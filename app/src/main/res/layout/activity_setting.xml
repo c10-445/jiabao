@@ -15,7 +15,7 @@
         android:layout_height="50dp"
         android:background="@color/colorHoloBlue"
         android:gravity="center"
-        android:text="添加操作"
+        android:text="设置"
         android:textColor="@color/white"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -24,38 +24,41 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView32"
+        android:id="@+id/history_check"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="4dp"
+        android:background="@color/white"
+        android:gravity="left|center_vertical"
+        android:onClick="historyCheck"
+        android:paddingStart="12dp"
+        android:text="悬浮球"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tittle" />
+
+    <TextView
+        android:id="@+id/back"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/arrow"
+        android:onClick="back"
         app:layout_constraintStart_toStartOf="@+id/tittle"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ListView
-        android:id="@+id/listView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:divider="@android:drawable/list_selector_background"
-        android:dividerHeight="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tittle" />
-
-    <TextView
-        android:id="@+id/textView41"
+    <Switch
+        android:id="@+id/switch2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="8dp"
-        android:text="完成"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tittle"
-        app:layout_constraintEnd_toEndOf="@+id/tittle"
-        app:layout_constraintTop_toTopOf="@+id/tittle" />
+        android:layout_marginEnd="24dp"
+        android:thumb="@drawable/thumb"
+        android:track="@drawable/white_track"
+        app:layout_constraintBottom_toBottomOf="@+id/history_check"
+        app:layout_constraintEnd_toEndOf="@+id/history_check"
+        app:layout_constraintTop_toTopOf="@+id/history_check" />
 
 </android.support.constraint.ConstraintLayout>
