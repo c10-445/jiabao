@@ -8,5 +8,5 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_weight="1"
-        android:background="@drawable/round_shape_999_blue" />
+        android:background="@drawable/shape_corner_30dp" />
 </android.support.constraint.ConstraintLayout>
