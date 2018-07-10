@@ -61,7 +61,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
             return;
         }
 
-        IuserModel userModel=new ImpUserModel(getApp().getUserDao());
+        IuserModel userModel=new ImpUserModel();
         int userid= userModel.getUserId().intValue();
         Http.modifyPassword(userid, oldpass, newpass, new Callback.CommonCallback<String>() {
             @Override

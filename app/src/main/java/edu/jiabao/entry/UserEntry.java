@@ -11,15 +11,7 @@ public class UserEntry {
     private String nick_name;
     private boolean is_online;
 
-    public UserEntry DaoToEntry(User user){
-        userEntry.setNick_name(user.getNick_name());
-        userEntry.setUser_id(user.getUser_id());
-        userEntry.setIs_online(user.getIs_online());
-        userEntry.setPhone_Num(user.getPhone_Num());
-        return userEntry;
-    }
-
-    public User EntryToDao(){
+    public User toUser(){
         return new User(userEntry.getUser_id(),
                 userEntry.getPhone_Num(),
                     userEntry.getNick_name(),
@@ -33,8 +25,8 @@ public class UserEntry {
         return userEntry;
     }
 
-    public static void setUser(Long user_id, String phone_Num, String nick_name,
-                               boolean is_online) {
+    public static void setUserEntry(Long user_id, String phone_Num, String nick_name,
+                                    boolean is_online) {
         userEntry.user_id = user_id;
         userEntry.phone_Num = phone_Num;
         userEntry.nick_name = nick_name;
@@ -43,6 +35,13 @@ public class UserEntry {
 
     public static void setUserEntry(UserEntry _userEntry){
         userEntry = _userEntry;
+    }
+
+    public static void setUserEntry(User user){
+        userEntry.user_id = user.getUser_id();
+        userEntry.phone_Num = user.getPhone_Num();
+        userEntry.nick_name = user.getNick_name();
+        userEntry.is_online = user.getIs_online();
     }
 
     private UserEntry(Long user_id, String phone_Num, String nick_name,

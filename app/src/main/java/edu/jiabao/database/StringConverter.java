@@ -13,7 +13,7 @@ public class StringConverter implements PropertyConverter<List<String>, String> 
             return null;
         }
         else {
-            List<String> list = Arrays.asList(databaseValue.split(","));
+            List<String> list = Arrays.asList(databaseValue.split(";"));
             return list;
         }
     }
@@ -27,7 +27,7 @@ public class StringConverter implements PropertyConverter<List<String>, String> 
             StringBuilder sb= new StringBuilder();
             for(String link:entityProperty){
                 sb.append(link);
-                sb.append(",");
+                sb.append(";");
             }
             return sb.toString();
         }

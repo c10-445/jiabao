@@ -6,4 +6,5 @@ import edu.jiabao.entry.DeviceEntry;
 
 public interface IDeviceView {
     public void initListView(List<DeviceEntry> list);
+    public void reflesh();
 }

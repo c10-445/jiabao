@@ -9,14 +9,17 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
 import edu.jiabao.ControlApplication;
 import edu.jiabao.R;
+import edu.jiabao.modle.ImpDecicePackageModel;
+import edu.jiabao.modle.ImpDeviceModel;
 import edu.jiabao.modle.ImpUserModel;
+import edu.jiabao.modle.inteface.IDeviceModel;
+import edu.jiabao.modle.inteface.IdevicePackageModel;
 import edu.jiabao.presenter.MainPresenter;
 import edu.jiabao.view.home.homeFragment;
 import edu.jiabao.view.inteface.IMainView;
@@ -24,6 +27,7 @@ import edu.jiabao.view.label.labelFragment;
 import edu.jiabao.view.timing.timingFragment;
 import edu.jiabao.view.userManagement.AccountActivity;
 import edu.jiabao.view.userManagement.LoginActivity;
+import edu.jiabao.view.userManagement.SettingActivity;
 
 public class MainActivity extends AppCompatActivity implements IMainView {
     private MainPresenter presenter;
@@ -82,18 +86,21 @@ public class MainActivity extends AppCompatActivity implements IMainView {
         FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
         switch (name){
             case "home":
-                setTitle("首页");
-                fragmentTransaction.hide(labelFragment).hide(timingFragment).show(homeFragment);
+                homeFragment=new homeFragment();
+                fragmentTransaction.replace(R.id.fragment_layout,homeFragment,"home");
+                fragmentTransaction.show(homeFragment);
                 fragmentTransaction.commit();
                 break;
             case "label":
-                setTitle("分类");
-                fragmentTransaction.hide(labelFragment).hide(homeFragment).show(labelFragment);
+                labelFragment=new labelFragment();
+                fragmentTransaction.replace(R.id.fragment_layout,labelFragment,"label");
+                fragmentTransaction.show(labelFragment);
                 fragmentTransaction.commit();
                 break;
             case "timing":
-                setTitle("定时");
-                fragmentTransaction.hide(labelFragment).hide(homeFragment).show(timingFragment);
+                timingFragment=new timingFragment();
+                fragmentTransaction.replace(R.id.fragment_layout,timingFragment,"timing");
+                fragmentTransaction.show(timingFragment);
                 fragmentTransaction.commit();
                 break;
         }
@@ -110,6 +117,7 @@ public class MainActivity extends AppCompatActivity implements IMainView {
     }
 
     void init(){
+        loginCheckAndInit();
         NavigationView leftnavigation=(NavigationView) findViewById(R.id.nav);
         leftnavigation.setNavigationItemSelectedListener(leftNav);
 
@@ -117,7 +125,7 @@ public class MainActivity extends AppCompatActivity implements IMainView {
         name=headView.findViewById(R.id.name);
         setName();
 
-        presenter=new MainPresenter(this,getApp().getUserDao());
+        presenter=new MainPresenter(this);
 
         homeFragment=new homeFragment();
         labelFragment=new labelFragment();
@@ -126,9 +134,6 @@ public class MainActivity extends AppCompatActivity implements IMainView {
         fragmentManager=this.getSupportFragmentManager();
         FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.fragment_layout,homeFragment,"home");
-        fragmentTransaction.add(R.id.fragment_layout,labelFragment,"label");
-        fragmentTransaction.add(R.id.fragment_layout,timingFragment,"timing");
-        fragmentTransaction.hide(labelFragment).hide(timingFragment).show(homeFragment);
         fragmentTransaction.commit();
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
@@ -138,20 +143,11 @@ public class MainActivity extends AppCompatActivity implements IMainView {
         navigation.setDrawingCacheBackgroundColor(getResources().getColor(R.color.colorHoloBlue));
 
 
-        
-        ImpUserModel impUserModel=new ImpUserModel(getApp().getUserDao());
-        if(impUserModel.checkOnlineUser().intValue()==-1){
-            Intent intent=new Intent(this, LoginActivity.class);
-            startActivity(intent);
-            finish();
-        }
-
 
     }
 
     public void setName(){
         if(ImpUserModel.getUser().getUser_id()!=-1) {
-            Log.i("name:",ImpUserModel.getUser().getNick_name());
             name.setText(ImpUserModel.getUser().getNick_name());
         }
     }
@@ -171,6 +167,19 @@ public class MainActivity extends AppCompatActivity implements IMainView {
 
     @Override
     public void settingManage() {
-
+        Intent intent=new Intent(this, SettingActivity.class);
+        startActivity(intent);
     }
+
+    public void loginCheckAndInit(){
+        ImpUserModel impUserModel=new ImpUserModel();
+        if(impUserModel.checkOnlineUser().intValue()==-1){//初始化用户
+            Intent intent=new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+        }
+        IDeviceModel deviceModel=new ImpDeviceModel();
+        IdevicePackageModel packageModel=new ImpDecicePackageModel();
+    }
+
 }

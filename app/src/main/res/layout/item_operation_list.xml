@@ -6,50 +6,46 @@
     android:layout_height="match_parent"
     android:background="@color/background_huise">
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/darkgray"
-        android:gravity="center"
-        android:text="—"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        android:textStyle="bold"
+    <Spinner
+        android:id="@+id/spinner_object"
+        style="@android:style/Widget.Holo.Light.Spinner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/spinner_operator"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/spinner_operator"
         style="@android:style/Widget.Holo.Light.Spinner"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/button3"
-        app:layout_constraintEnd_toStartOf="@+id/spinner2"
-        app:layout_constraintStart_toEndOf="@+id/button3"
-        app:layout_constraintTop_toTopOf="@+id/button3" />
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/spinner_object"
+        app:layout_constraintEnd_toStartOf="@+id/spinner_parameter"
+        app:layout_constraintStart_toEndOf="@+id/spinner_object"
+        app:layout_constraintTop_toTopOf="@+id/spinner_object" />
 
     <Spinner
-        android:id="@+id/spinner2"
+        android:id="@+id/spinner_parameter"
         style="@android:style/Widget.Holo.Light.Spinner"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/spinner"
-        app:layout_constraintEnd_toStartOf="@+id/button4"
-        app:layout_constraintStart_toEndOf="@+id/spinner"
-        app:layout_constraintTop_toTopOf="@+id/spinner" />
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/spinner_object"
+        app:layout_constraintEnd_toStartOf="@+id/btn_add_operator_item"
+        app:layout_constraintStart_toEndOf="@+id/spinner_operator"
+        app:layout_constraintTop_toTopOf="@+id/spinner_object" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/btn_add_operator_item"
         android:layout_width="40dp"
-        android:layout_height="0dp"
+        android:layout_height="40dp"
         android:background="@color/darkgray"
         android:gravity="center"
         android:text="+"
         android:textColor="@color/white"
         android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="@+id/spinner2"
+        app:layout_constraintBottom_toBottomOf="@+id/spinner_parameter"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/spinner2" />
+        app:layout_constraintTop_toTopOf="@+id/spinner_operator" />
 </android.support.constraint.ConstraintLayout>

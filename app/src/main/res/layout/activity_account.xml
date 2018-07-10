@@ -48,8 +48,40 @@
         android:text="  修改密码"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/history_check" />
+
+    <TextView
+        android:id="@+id/upload"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="4dp"
+        android:background="@color/white"
+        android:gravity="left|center_vertical"
+        android:onClick="upload"
+        android:text="  上传信息"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/modify_password" />
+
+    <TextView
+        android:id="@+id/download"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="4dp"
+        android:background="@color/white"
+        android:gravity="left|center_vertical"
+        android:onClick="download"
+        android:text="  下载信息"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/upload" />
+
 
     <ImageView
         android:id="@+id/imageView2"
@@ -75,6 +107,32 @@
         app:layout_constraintBottom_toBottomOf="@+id/modify_password"
         app:layout_constraintEnd_toEndOf="@+id/modify_password"
         app:layout_constraintTop_toTopOf="@+id/modify_password"
+        app:srcCompat="@drawable/arrow_right" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        android:tint="@color/darkgray"
+        app:layout_constraintBottom_toTopOf="@+id/download"
+        app:layout_constraintEnd_toEndOf="@+id/modify_password"
+        app:layout_constraintTop_toTopOf="@+id/upload"
+        app:srcCompat="@drawable/arrow_right" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        android:tint="@color/darkgray"
+        app:layout_constraintBottom_toBottomOf="@+id/download"
+        app:layout_constraintEnd_toEndOf="@+id/modify_password"
+        app:layout_constraintTop_toTopOf="@+id/download"
         app:srcCompat="@drawable/arrow_right" />
 
     <TextView

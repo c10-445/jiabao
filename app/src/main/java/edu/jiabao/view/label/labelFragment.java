@@ -5,7 +5,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,9 +34,6 @@ public class labelFragment extends Fragment implements ILabelView {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        list.add("温控类");
-        list.add("安防类");
-        list.add("照明类");
     }
 
     @Override
@@ -51,7 +47,12 @@ public class labelFragment extends Fragment implements ILabelView {
     }
 
     void init(View view){
-        labelPresenter=new LabelPresenter(this,getApp().getUserDao());
+        if(list.size()==0){
+            list.add("温控类");
+            list.add("安防类");
+            list.add("照明类");
+        }
+        labelPresenter=new LabelPresenter(this);
         ListView listView=view.findViewById(R.id.listView);
         listView.setAdapter(new LabelListAdapter(getActivity(),list));
 
@@ -68,14 +69,22 @@ public class labelFragment extends Fragment implements ILabelView {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.d("ooo","213213");
+                Bundle bundle = new Bundle();
+                if(position==0) {
+                    bundle.putString("type", "tem");
+                }
+                else if(position==1){
+                    bundle.putString("type", "protect");
+                }
+                else if(position==2){
+                    bundle.putString("type","light");
+                }
                 Fragment devices = new deviceFragment();
-                Bundle bundle= new Bundle();
-                bundle.putString("type","label");
                 devices.setArguments(bundle);
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.add(R.id.fragment_layout, devices, "device");
+                fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.hide(fragmentManager.findFragmentByTag("label")).show(devices);
                 fragmentTransaction.commit();
             }

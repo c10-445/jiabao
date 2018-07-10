@@ -56,7 +56,7 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
         password=findViewById(R.id.password);
         register=findViewById(R.id.register);
         enter=findViewById(R.id.ok);
-        presenter=new LoginPresenter(this,getApp().getUserDao());
+        presenter=new LoginPresenter(this);
 
         enter.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -23,7 +23,7 @@
         app:layout_constraintEnd_toStartOf="@+id/model_btn"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
+    <Button
         android:id="@+id/model_btn"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -38,7 +38,7 @@
         app:layout_constraintStart_toEndOf="@+id/switch_btn"
         app:layout_constraintTop_toTopOf="@+id/switch_btn" />
 
-    <TextView
+    <Button
         android:id="@+id/wind_size_btn"
         android:layout_width="0dp"
         android:layout_height="70dp"
@@ -53,7 +53,7 @@
         app:layout_constraintEnd_toStartOf="@+id/wind_dir_btn"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
+    <Button
         android:id="@+id/wind_dir_btn"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -69,7 +69,7 @@
         app:layout_constraintStart_toEndOf="@+id/wind_size_btn"
         app:layout_constraintTop_toTopOf="@+id/wind_size_btn" />
 
-    <TextView
+    <Button
         android:id="@+id/wind_swip_btn"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -84,7 +84,7 @@
         app:layout_constraintStart_toEndOf="@+id/wind_dir_btn"
         app:layout_constraintTop_toTopOf="@+id/wind_dir_btn" />
 
-    <TextView
+    <Button
         android:id="@+id/tem_dec_btn"
         android:layout_width="0dp"
         android:layout_height="70dp"
@@ -100,7 +100,7 @@
         app:layout_constraintEnd_toStartOf="@+id/textView11"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
+    <Button
         android:id="@+id/timing_btn"
         android:layout_width="0dp"
         android:layout_height="70dp"
@@ -130,7 +130,7 @@
         app:layout_constraintStart_toEndOf="@+id/tem_dec_btn"
         app:layout_constraintTop_toTopOf="@+id/tem_dec_btn" />
 
-    <TextView
+    <Button
         android:id="@+id/tem_inc_btn"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -146,7 +146,7 @@
         app:layout_constraintStart_toEndOf="@+id/textView11"
         app:layout_constraintTop_toTopOf="@+id/textView11" />
 
-    <TextView
+    <Button
         android:id="@+id/sleep_btn"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -162,7 +162,7 @@
         app:layout_constraintStart_toEndOf="@+id/timing_btn"
         app:layout_constraintTop_toTopOf="@+id/timing_btn" />
 
-    <TextView
+    <Button
         android:id="@+id/more_btn"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -183,36 +183,34 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="97dp"
         android:layout_marginEnd="150dp"
-        android:layout_marginStart="128dp"
         android:layout_marginTop="90dp"
         android:text="26"
         android:textSize="84sp"
         android:textStyle="normal"
         app:layout_constraintBottom_toTopOf="@+id/switch_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginEnd="121dp"
         android:layout_marginTop="99dp"
         android:text="℃"
         android:textSize="30sp"
-        app:layout_constraintStart_toEndOf="@+id/tem_text"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/model_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginEnd="81dp"
         android:layout_marginTop="8dp"
         android:text="❉制冷"
         android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/tem_text"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
     <TextView
@@ -234,18 +232,6 @@
         android:text="自动"
         app:layout_constraintBottom_toTopOf="@+id/switch_btn"
         app:layout_constraintStart_toEndOf="@+id/textView18" />
-
-    <TextView
-        android:id="@+id/time_opened"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:text="已开启3小时10分钟"
-        app:layout_constraintBottom_toTopOf="@+id/switch_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView21"

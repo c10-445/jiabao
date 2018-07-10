@@ -7,7 +7,7 @@ import org.greenrobot.greendao.annotation.Generated;
 
 @Entity
 public class folder {
-    @Id
+    @Id(autoincrement = true)
     private Long folder_id;
     @Property
     private String folder_name;

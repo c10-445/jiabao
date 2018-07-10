@@ -11,8 +11,4 @@
         android:title="添加设备夹"
         app:showAsAction="always" />
 
-    <item
-        android:id="@+id/add_operator"
-        android:title="添加设备夹操作"
-        app:showAsAction="always" />
 </menu>

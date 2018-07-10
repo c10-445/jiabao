@@ -43,7 +43,7 @@ public class folderDao extends AbstractDao<folder, Long> {
     public static void createTable(Database db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"FOLDER\" (" + //
-                "\"_id\" INTEGER PRIMARY KEY ," + // 0: folder_id
+                "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: folder_id
                 "\"FOLDER_NAME\" TEXT," + // 1: folder_name
                 "\"FOLDER_TYPE\" INTEGER," + // 2: folder_type
                 "\"FOLDER_PARENTS\" INTEGER," + // 3: folder_parents

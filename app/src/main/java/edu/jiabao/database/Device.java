@@ -21,9 +21,11 @@ public class Device {
     private Long wind_size;;
     @Property
     private Long user_id;
-    @Generated(hash = 423200390)
+    @Property
+    private String device_name;
+    @Generated(hash = 1515899771)
     public Device(Long device_id, boolean turn_on, Long degree, Long run_model,
-            Long fan_state, Long wind_size, Long user_id) {
+            Long fan_state, Long wind_size, Long user_id, String device_name) {
         this.device_id = device_id;
         this.turn_on = turn_on;
         this.degree = degree;
@@ -31,6 +33,7 @@ public class Device {
         this.fan_state = fan_state;
         this.wind_size = wind_size;
         this.user_id = user_id;
+        this.device_name = device_name;
     }
     @Generated(hash = 1469582394)
     public Device() {
@@ -77,5 +80,12 @@ public class Device {
     public void setUser_id(Long user_id) {
         this.user_id = user_id;
     }
+    public String getDevice_name() {
+        return this.device_name;
+    }
+    public void setDevice_name(String device_name) {
+        this.device_name = device_name;
+    }
+   
    
 }

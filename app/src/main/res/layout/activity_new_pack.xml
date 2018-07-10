@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_huise"
+    android:background="@drawable/shape_corner_30dp"
     android:orientation="vertical"
     android:paddingLeft="0dp"
-    android:paddingRight="0dp">
+    android:paddingRight="0dp"
+    android:theme="@style/Transparent">
 
     <Button
         android:id="@+id/btn_cancel"
@@ -17,12 +18,12 @@
         android:background="@drawable/shape_corner_bottomleft"
         android:text="取消"
         app:layout_constraintBottom_toBottomOf="@+id/textView7"
-        app:layout_constraintEnd_toStartOf="@+id/button5"
+        app:layout_constraintEnd_toStartOf="@+id/btn_ok"
         app:layout_constraintStart_toStartOf="@+id/textView7"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_name" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/btn_ok"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="24dp"
@@ -31,7 +32,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/btn_cancel"
         app:layout_constraintEnd_toEndOf="@+id/textView7"
         app:layout_constraintStart_toEndOf="@+id/btn_cancel"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_name" />
 
     <TextView
         android:id="@+id/textView7"
@@ -43,7 +44,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/edit_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"

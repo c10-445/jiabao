@@ -14,4 +14,12 @@
 
     </style>
 
+    <style parent="Theme.AppCompat.Light.NoActionBar" name="Transparent">
+
+    <item name="android:windowBackground">@drawable/shape_corner_30dp</item>
+
+    <item name="android:windowIsTranslucent">true</item>
+
+    </style>
+
 </resources>

@@ -30,6 +30,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/arrow"
+        android:onClick="back"
         app:layout_constraintStart_toStartOf="@+id/tittle"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,12 +38,13 @@
         android:id="@+id/listView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="8dp"
         android:divider="@android:drawable/list_selector_background"
         android:dividerHeight="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tittle" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_name" />
 
     <TextView
         android:id="@+id/textView41"
@@ -51,11 +53,36 @@
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="8dp"
+        android:onClick="ok"
         android:text="完成"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/tittle"
         app:layout_constraintEnd_toEndOf="@+id/tittle"
         app:layout_constraintTop_toTopOf="@+id/tittle" />
+
+    <EditText
+        android:id="@+id/edit_name"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/round_shape_4_white"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/tittle" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="操作名"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tittle" />
 
 </android.support.constraint.ConstraintLayout>

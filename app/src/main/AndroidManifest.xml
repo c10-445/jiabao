@@ -5,6 +5,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW"/>
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
@@ -13,6 +15,7 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
 
     <application
         android:name=".ControlApplication"
@@ -55,8 +58,13 @@
         <activity android:name=".view.userManagement.RegisterActivity" />
         <activity android:name=".view.home.NewOperationActivity" />
         <activity android:name=".view.timing.NewTimingActivity" />
-        <activity android:name=".view.home.NewPackActivity" />
-        <activity android:name=".view.userManagement.SettingActivity"></activity>
+        <activity android:name=".view.home.NewPackActivity"
+            android:theme="@style/Transparent"/>
+        <activity android:name=".view.userManagement.SettingActivity">
+        </activity>
+        <activity android:name=".view.home.NewDeviceActivity"
+            android:theme="@style/Transparent"/>
+        <service android:name=".floatWindow.FlowWindowService"/>
     </application>
 
 </manifest>

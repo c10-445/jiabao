@@ -13,18 +13,7 @@
         android:orientation="horizontal"
         android:descendantFocusability="blocksDescendants">
 
-        <TextView
-            android:id="@+id/tv_top"
-            android:layout_width="80dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="36dp"
-            android:background="@drawable/square_shape_sliver"
-            android:gravity="center"
-            android:text="置顶"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
+        <Button
             android:id="@+id/tv_delete"
             android:layout_width="80dp"
             android:layout_height="50dp"
@@ -79,13 +68,13 @@
             android:layout_marginTop="8dp"
             android:adjustViewBounds="false"
             android:background="@drawable/round_shape_999_lightcoral"
+            android:focusable="false"
             android:padding="7dp"
             android:scaleType="fitXY"
             android:tint="@color/white"
             app:layout_constraintBottom_toBottomOf="@+id/background_txt"
             app:layout_constraintEnd_toEndOf="@+id/background_txt"
             app:layout_constraintTop_toTopOf="@+id/background_txt"
-            android:focusable="false"
             app:srcCompat="@drawable/kaiguan" />
 
         <ImageView
@@ -115,17 +104,15 @@
 
         <TextView
             android:id="@+id/device_name"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:layout_marginEnd="16dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
             android:text="空调一"
             android:textColor="@color/white"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="@+id/background_txt"
-            app:layout_constraintEnd_toStartOf="@+id/tem_text"
             app:layout_constraintStart_toEndOf="@+id/textView26"
             app:layout_constraintTop_toTopOf="@+id/background_txt" />
 

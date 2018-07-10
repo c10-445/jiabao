@@ -29,6 +29,7 @@ public class DeviceDao extends AbstractDao<Device, Long> {
         public final static Property Fan_state = new Property(4, Long.class, "fan_state", false, "FAN_STATE");
         public final static Property Wind_size = new Property(5, Long.class, "wind_size", false, "WIND_SIZE");
         public final static Property User_id = new Property(6, Long.class, "user_id", false, "USER_ID");
+        public final static Property Device_name = new Property(7, String.class, "device_name", false, "DEVICE_NAME");
     }
 
 
@@ -50,7 +51,8 @@ public class DeviceDao extends AbstractDao<Device, Long> {
                 "\"RUN_MODEL\" INTEGER," + // 3: run_model
                 "\"FAN_STATE\" INTEGER," + // 4: fan_state
                 "\"WIND_SIZE\" INTEGER," + // 5: wind_size
-                "\"USER_ID\" INTEGER);"); // 6: user_id
+                "\"USER_ID\" INTEGER," + // 6: user_id
+                "\"DEVICE_NAME\" TEXT);"); // 7: device_name
     }
 
     /** Drops the underlying database table. */
@@ -93,6 +95,11 @@ public class DeviceDao extends AbstractDao<Device, Long> {
         if (user_id != null) {
             stmt.bindLong(7, user_id);
         }
+ 
+        String device_name = entity.getDevice_name();
+        if (device_name != null) {
+            stmt.bindString(8, device_name);
+        }
     }
 
     @Override
@@ -129,6 +136,11 @@ public class DeviceDao extends AbstractDao<Device, Long> {
         if (user_id != null) {
             stmt.bindLong(7, user_id);
         }
+ 
+        String device_name = entity.getDevice_name();
+        if (device_name != null) {
+            stmt.bindString(8, device_name);
+        }
     }
 
     @Override
@@ -145,7 +157,8 @@ public class DeviceDao extends AbstractDao<Device, Long> {
             cursor.isNull(offset + 3) ? null : cursor.getLong(offset + 3), // run_model
             cursor.isNull(offset + 4) ? null : cursor.getLong(offset + 4), // fan_state
             cursor.isNull(offset + 5) ? null : cursor.getLong(offset + 5), // wind_size
-            cursor.isNull(offset + 6) ? null : cursor.getLong(offset + 6) // user_id
+            cursor.isNull(offset + 6) ? null : cursor.getLong(offset + 6), // user_id
+            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7) // device_name
         );
         return entity;
     }
@@ -159,6 +172,7 @@ public class DeviceDao extends AbstractDao<Device, Long> {
         entity.setFan_state(cursor.isNull(offset + 4) ? null : cursor.getLong(offset + 4));
         entity.setWind_size(cursor.isNull(offset + 5) ? null : cursor.getLong(offset + 5));
         entity.setUser_id(cursor.isNull(offset + 6) ? null : cursor.getLong(offset + 6));
+        entity.setDevice_name(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
      }
     
     @Override

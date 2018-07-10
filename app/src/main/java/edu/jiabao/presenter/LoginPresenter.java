@@ -1,6 +1,5 @@
 package edu.jiabao.presenter;
 
-import edu.jiabao.database.UserDao;
 import edu.jiabao.jsonObject.UserObject;
 import edu.jiabao.modle.ImpUserModel;
 import edu.jiabao.modle.inteface.IuserModel;
@@ -10,9 +9,9 @@ public class LoginPresenter {
     ILoginView view;
     IuserModel model;
 
-    public LoginPresenter(ILoginView view, UserDao userDao){
+    public LoginPresenter(ILoginView view){
         this.view=view;
-        model=new ImpUserModel(userDao);
+        model=new ImpUserModel();
     }
 
     public void loginSuccess(UserObject userObject){

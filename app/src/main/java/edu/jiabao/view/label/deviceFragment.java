@@ -2,13 +2,14 @@ package edu.jiabao.view.label;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.DrawerLayout;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -19,7 +20,6 @@ import edu.jiabao.R;
 import edu.jiabao.entry.DeviceEntry;
 import edu.jiabao.entry.UserEntry;
 import edu.jiabao.presenter.DevicePresenter;
-import edu.jiabao.view.MainActivity;
 import edu.jiabao.view.adapter.DeviceListAdapter;
 import edu.jiabao.view.inteface.IDeviceView;
 
@@ -27,6 +27,8 @@ public class deviceFragment extends Fragment implements IDeviceView {
     private ListView listView;
     private TextView tittle;
     private DevicePresenter presenter;
+    private Button back;
+    private DeviceListAdapter adapter;
 
     public ControlApplication getApp(){
         return (ControlApplication) getActivity().getApplicationContext();
@@ -46,16 +48,18 @@ public class deviceFragment extends Fragment implements IDeviceView {
     }
 
     private void init(View view){
-        presenter=new DevicePresenter(this,getApp().getDeviceDao(), UserEntry.getUserEntry().getUser_id());
+        presenter=new DevicePresenter(this, UserEntry.getUserEntry().getUser_id());
         listView=view.findViewById(R.id.listView);
         tittle=view.findViewById(R.id.tittle);
         if (getArguments() != null) {
-            if (getArguments().getString("type").equals("label")){
+            if (getArguments().getString("type").equals("tem")){
                 tittle.setText("温控类");
                 presenter.initListView("label");
-            }else {
-                tittle.setText(getArguments().getString("name"));
-                presenter.initListView("home");
+            }else if (getArguments().getString("type").equals("protect")){
+                tittle.setText("安防类");
+            }
+            else if (getArguments().getString("type").equals("light")){
+                tittle.setText("照明类");
             }
         }
 
@@ -66,18 +70,30 @@ public class deviceFragment extends Fragment implements IDeviceView {
             }
         });
 
+        back=view.findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fragmentManager=getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.remove(fragmentManager.findFragmentByTag("device"));
+                fragmentTransaction.show(fragmentManager.findFragmentByTag("label"));
+                fragmentTransaction.commit();
+            }
+        });
 
     }
 
     @Override
     public void initListView(List<DeviceEntry> list) {
-        listView.setAdapter(new DeviceListAdapter(getActivity(),list));
+        adapter=new DeviceListAdapter(getActivity(),presenter,list);
+        listView.setAdapter(adapter);
     }
 
-    public void userManage(View view){
-        MainActivity activity=  (MainActivity)getActivity();
-        activity.setName();
-        DrawerLayout drawerLayout=getActivity().findViewById(R.id.drawerLayout);
-        drawerLayout.openDrawer(Gravity.LEFT);
+    @Override
+    public void reflesh(){
+        adapter.reflesh();
     }
+
+
 }

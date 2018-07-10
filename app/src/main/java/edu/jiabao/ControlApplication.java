@@ -4,6 +4,7 @@ import android.app.Application;
 
 import org.xutils.x;
 
+import edu.jiabao.dao.Dao;
 import edu.jiabao.database.DaoMaster;
 import edu.jiabao.database.DaoSession;
 import edu.jiabao.database.DeviceDao;
@@ -49,5 +50,6 @@ public class ControlApplication extends Application {
         DaoMaster.DevOpenHelper devOpenHelper = new DaoMaster.DevOpenHelper(getApplicationContext(), "control.db", null);
         DaoMaster daoMaster = new DaoMaster(devOpenHelper.getWritableDb());
         setDaoSession(daoMaster.newSession());
+        Dao.initDao(daoSession);
     }
 }

@@ -3,14 +3,11 @@ package edu.jiabao.modle;
 
 import java.util.List;
 
-import edu.jiabao.database.User;
-import edu.jiabao.database.UserDao;
+import edu.jiabao.dao.Dao;
 import edu.jiabao.entry.UserEntry;
 import edu.jiabao.modle.inteface.IuserModel;
 
 public class ImpUserModel implements IuserModel {
-    private UserDao userDao;
-
     public static UserEntry getUser() {
         return UserEntry.getUserEntry();
     }
@@ -19,35 +16,22 @@ public class ImpUserModel implements IuserModel {
         UserEntry.setUserEntry(userEntry);
     }
 
-    private UserEntry DaoToEntry(User user){
-        return getUser().DaoToEntry(user);
 
-    }
-
-    private void EntryToDao(){
-        userDao.insertOrReplace(getUser().EntryToDao());
-    }
 
     public Long checkOnlineUser(){
-        List<edu.jiabao.database.User> list= userDao.queryBuilder().where(UserDao.Properties.Is_online.eq(true)).list();
+        List<edu.jiabao.database.User> list= Dao.UserQueryOnline();
         if (!list.isEmpty()){
-            DaoToEntry(list.get(0));
+            UserEntry.setUserEntry(list.get(0));
         }
 
         return getUser().getUser_id();
     }
 
 
-    public ImpUserModel(UserDao userDao) {
-        setUserDao(userDao);
-    }
-    public UserDao getUserDao() {
-        return userDao;
+    public ImpUserModel() {
+        getUser();
     }
 
-    public void setUserDao(UserDao userDao) {
-        this.userDao = userDao;
-    }
     @Override
     public Long getUserId(){
         return UserEntry.getUserEntry().getUser_id();
@@ -71,9 +55,9 @@ public class ImpUserModel implements IuserModel {
     @Override
     public void login(Long user_id, String phone_Num, String nick_name,
                       boolean is_online) {
-        UserEntry.setUser(user_id,phone_Num,nick_name,is_online);
+        UserEntry.setUserEntry(user_id,phone_Num,nick_name,is_online);
         //写进数据库
-        EntryToDao();
+        Dao.UserInsertUser(getUser().toUser());
     }
 
     @Override
@@ -89,7 +73,7 @@ public class ImpUserModel implements IuserModel {
     @Override
     public void logout() {
         getUser().setIs_online(false);
-        EntryToDao();
+        Dao.UserInsertUser(getUser().toUser());
         getUser().setUser_id(new Long(-1));
     }
 
