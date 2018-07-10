@@ -201,20 +201,20 @@ public class HomePresenter {
             @Override
             public void onSuccess(String result) {
                 deviceModel.setDevicesByOperator(entry);
-                Log.i("operatorSize",String.valueOf(entry.getContent_list().size()));
-                Log.i("http","success!");
+                //Log.i("operatorSize",String.valueOf(entry.getContent_list().size()));
+                //Log.i("http","success!");
             }
 
             @Override
             public void onError(Throwable ex, boolean isOnCallback) {
-                Log.i("http","err!");
+                //Log.i("http","err!");
                 ex.printStackTrace();
 
             }
 
             @Override
             public void onCancelled(CancelledException cex) {
-                Log.i("http","cancel!");
+                //Log.i("http","cancel!");
                 cex.printStackTrace();
             }
 
