@@ -21,6 +21,7 @@
             android:background="@drawable/square_shape_sliver"
             android:gravity="center"
             android:text="删除"
+            android:textColor="@color/crimson"
             app:layout_constraintStart_toEndOf="@+id/tv_top"
             app:layout_constraintTop_toTopOf="parent" />
 
