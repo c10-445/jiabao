@@ -51,6 +51,14 @@ public class OperatorListAdapter extends BaseAdapter {
         packageEntries=PackageEntry.getAllPackagesInPackage(owner);
     }
 
+    public OperatorListAdapter(Context context,List<PackageEntry> list) {
+        this.context = context;
+        listContainer = LayoutInflater.from(context);   //创建视图容器并设置上下文
+        operatorList =new ArrayList<>();
+        operatorList.add(new OperatorItemBean());
+        packageEntries=list;
+    }
+
     public List<OperatorItemBean> getOperatorList() {
         operatorList.remove(getCount()-1);
         return operatorList;

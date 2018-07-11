@@ -16,6 +16,7 @@ import edu.jiabao.database.Device;
 import edu.jiabao.database.DeviceDao;
 import edu.jiabao.database.Operator;
 import edu.jiabao.database.OperatorDao;
+import edu.jiabao.database.Timing;
 import edu.jiabao.database.TimingDao;
 import edu.jiabao.database.User;
 import edu.jiabao.database.UserDao;
@@ -24,6 +25,7 @@ import edu.jiabao.database.folderDao;
 import edu.jiabao.entry.DeviceEntry;
 import edu.jiabao.entry.OperatorEntry;
 import edu.jiabao.entry.PackageEntry;
+import edu.jiabao.entry.TimingEntry;
 import edu.jiabao.jsonObject.HttpDataBase;
 
 public class Dao {
@@ -186,6 +188,25 @@ public class Dao {
             dao.getOperatorDao().delete(list.get(i).toOperator());
         }
 
+    }
+
+    public static List<Timing> TimingQueryAllTiming(Long userId){
+        return dao.getTimingDao().queryBuilder().where(TimingDao.Properties.User_id.eq(userId)).list();
+    }
+
+    public static void TimingInsertTimings(List<TimingEntry> entries){
+        for (int i=0;i<entries.size();i++){
+            dao.getTimingDao().insertOrReplace(entries.get(i).toTiming());
+        }
+    }
+
+    public static void TimingAddTiming(Timing timing){
+        dao.getTimingDao().insertOrReplace(timing);
+    }
+
+
+    public static void TimingDeleteTiming(Timing timing){
+        dao.getTimingDao().delete(timing);
     }
 
     public static File getDatabase(int userId,Context context){

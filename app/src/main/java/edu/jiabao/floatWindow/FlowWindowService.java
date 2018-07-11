@@ -13,16 +13,21 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import edu.jiabao.R;
+import edu.jiabao.entry.OperatorEntry;
+import edu.jiabao.presenter.FloatWindowPresenter;
 
 public class FlowWindowService extends Service {
-
-
-    //DisplayMetrics dm = getApplicationContext().getResources().getDisplayMetrics();
     int heigth = 0;
     int width = 0;
     private static final String TAG = "MainService";
+    List<OperatorEntry> operatorEntries;
+    FloatWindowPresenter presenter;
     ConstraintLayout toucherLayout;
     WindowManager.LayoutParams params;
     WindowManager.LayoutParams params2;
@@ -48,9 +53,21 @@ public class FlowWindowService extends Service {
 
     @Override
     public int onStartCommand(Intent intent,  int flags, int startId){
+        operatorEntries=new ArrayList<>();
         heigth= intent.getIntExtra("height",0);
         width=intent.getIntExtra("width",0);
-        Log.i("service","aksjfh"+heigth);
+        int id1=intent.getIntExtra("operatorId1",-1);
+        int id2=intent.getIntExtra("operatorId2",-1);
+        int id3=intent.getIntExtra("operatorId3",-1);
+        /*
+        if (id1!=-1)
+            operatorEntries.add(OperatorEntry.getOperatorEntryById(id1));
+        if (id2!=-1)
+            operatorEntries.add(OperatorEntry.getOperatorEntryById(id2));
+        if (id3!=-1)
+            operatorEntries.add(OperatorEntry.getOperatorEntryById(id3));
+*/
+      //  presenter =new FloatWindowPresenter();
 
         createToucher();
         return super.onStartCommand(intent,flags,startId);
@@ -106,15 +123,87 @@ public class FlowWindowService extends Service {
         windowManager.addView(window,params2);
 
         window.setVisibility(View.INVISIBLE);
-        Button button=window.findViewById(R.id.button123);
-        button.setOnClickListener(new View.OnClickListener() {
+        TextView background=window.findViewById(R.id.txt_operator_back);
+        background.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            }
+        });
+
+        Button fold_one=window.findViewById(R.id.btn_fold_one);
+        Button op_one=window.findViewById(R.id.btn_operator_one);
+        Button fold_two=window.findViewById(R.id.btn_fold_two);
+        Button op_two=window.findViewById(R.id.btn_operator_two);
+        Button fold_three=window.findViewById(R.id.btn_fold_three);
+        Button op_three=window.findViewById(R.id.btn_operator_three);
+
+        Button open_app=window.findViewById(R.id.btn_open_app);
+
+        //开启应用
+        open_app.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               /* Intent intent=new Intent(homeFragment.instance.getActivity(),MainActivity.class);
+                startActivity(intent);*/
+            }
+        });
+
+        fold_one.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //window.setVisibility(View.INVISIBLE);
+            }
+        });
+/*
+        if (!operatorEntries.isEmpty()) {
+            PackageEntry entry= PackageEntry.getPackageById(operatorEntries.get(0).getFolder_id());
+            fold_one.setText(entry.getFolder_name());
+        }
+
+        if (operatorEntries.size()>=1){
+            PackageEntry entry= PackageEntry.getPackageById(operatorEntries.get(1).getFolder_id());
+            fold_one.setText(entry.getFolder_name());
+        }
+
+        if (operatorEntries.size()>=2){
+            PackageEntry entry= PackageEntry.getPackageById(operatorEntries.get(2).getFolder_id());
+            fold_one.setText(entry.getFolder_name());
+        }*/
+
+        //第一个设备夹操作
+        op_one.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               /* if (!operatorEntries.isEmpty())
+                    presenter.operator(operatorEntries.get(0));*/
+            }
+        });
+
+        //第二个设备夹操作
+        op_two.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               /* if (operatorEntries.size()>=1)
+                    presenter.operator(operatorEntries.get(1));*/
+            }
+        });
+
+        //第三个设备夹操作
+        op_three.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                /*if (operatorEntries.size()>=2)
+                presenter.operator(operatorEntries.get(2));*/
+            }
+        });
+
+        TextView imageButton=window.findViewById(R.id.image_float);
+        imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 window.setVisibility(View.INVISIBLE);
             }
         });
-
-
         //主动计算出当前View的宽高信息.
         toucherLayout.measure(View.MeasureSpec.UNSPECIFIED,View.MeasureSpec.UNSPECIFIED);
 

@@ -5,101 +5,95 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <ImageView
-        android:id="@+id/imageView"
+    <TextView
+        android:id="@+id/image_float"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/lightgray"
+        android:background="@android:drawable/screen_background_dark_transparent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/txt_operator_back"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="250dp"
+        android:layout_marginBottom="254dp"
         android:layout_marginEnd="32dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="100dp"
         android:background="@drawable/shape_corner_huise_30dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="@+id/image_float"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        app:layout_constraintTop_toTopOf="@+id/image_float" />
 
     <Button
-        android:id="@+id/button123"
+        android:id="@+id/btn_fold_one"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="24dp"
         android:background="@drawable/shape_gradient_left"
-        android:text="Button"
-        app:layout_constraintEnd_toStartOf="@+id/button3"
-        app:layout_constraintStart_toStartOf="@+id/textView4"
-        app:layout_constraintTop_toTopOf="@+id/textView4" />
+        app:layout_constraintEnd_toStartOf="@+id/btn_operator_one"
+        app:layout_constraintStart_toStartOf="@+id/txt_operator_back"
+        app:layout_constraintTop_toTopOf="@+id/txt_operator_back" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btn_operator_one"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/shape_gradient_right"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="@+id/button123"
-        app:layout_constraintEnd_toEndOf="@+id/textView4"
-        app:layout_constraintStart_toEndOf="@+id/button123"
-        app:layout_constraintTop_toTopOf="@+id/button123" />
+        app:layout_constraintBottom_toBottomOf="@+id/btn_fold_one"
+        app:layout_constraintEnd_toEndOf="@+id/txt_operator_back"
+        app:layout_constraintStart_toEndOf="@+id/btn_fold_one"
+        app:layout_constraintTop_toTopOf="@+id/btn_fold_one" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/btn_fold_two"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@drawable/shape_gradient_left"
-        android:text="Button"
-        app:layout_constraintEnd_toStartOf="@+id/button3"
-        app:layout_constraintStart_toStartOf="@+id/button123"
-        app:layout_constraintTop_toBottomOf="@+id/button123" />
+        app:layout_constraintEnd_toStartOf="@+id/btn_operator_one"
+        app:layout_constraintStart_toStartOf="@+id/btn_fold_one"
+        app:layout_constraintTop_toBottomOf="@+id/btn_fold_one" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/btn_operator_two"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/shape_gradient_right"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="@+id/button4"
-        app:layout_constraintEnd_toEndOf="@+id/button3"
-        app:layout_constraintStart_toEndOf="@+id/button4"
-        app:layout_constraintTop_toTopOf="@+id/button4" />
+        app:layout_constraintBottom_toBottomOf="@+id/btn_fold_two"
+        app:layout_constraintEnd_toEndOf="@+id/btn_operator_one"
+        app:layout_constraintStart_toEndOf="@+id/btn_fold_two"
+        app:layout_constraintTop_toTopOf="@+id/btn_fold_two" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/btn_fold_three"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@drawable/shape_gradient_left"
-        android:text="Button"
-        app:layout_constraintEnd_toStartOf="@+id/button5"
-        app:layout_constraintStart_toStartOf="@+id/button4"
-        app:layout_constraintTop_toBottomOf="@+id/button4" />
+        app:layout_constraintEnd_toStartOf="@+id/btn_operator_two"
+        app:layout_constraintStart_toStartOf="@+id/btn_fold_two"
+        app:layout_constraintTop_toBottomOf="@+id/btn_fold_two" />
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/btn_operator_three"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/shape_gradient_right"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="@+id/button6"
-        app:layout_constraintEnd_toEndOf="@+id/button5"
-        app:layout_constraintStart_toEndOf="@+id/button6"
-        app:layout_constraintTop_toTopOf="@+id/button6"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_fold_three"
+        app:layout_constraintEnd_toEndOf="@+id/btn_operator_two"
+        app:layout_constraintStart_toEndOf="@+id/btn_fold_three"
+        app:layout_constraintTop_toTopOf="@+id/btn_fold_three"
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
-        android:id="@+id/button8"
+        android:id="@+id/btn_open_app"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -107,9 +101,9 @@
         android:layout_marginStart="64dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/shape_gradient"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="@+id/textView4"
-        app:layout_constraintEnd_toEndOf="@+id/button7"
-        app:layout_constraintStart_toStartOf="@+id/button6"
-        app:layout_constraintTop_toBottomOf="@+id/button6" />
+        android:text="打开应用"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_operator_back"
+        app:layout_constraintEnd_toEndOf="@+id/btn_operator_three"
+        app:layout_constraintStart_toStartOf="@+id/btn_fold_three"
+        app:layout_constraintTop_toBottomOf="@+id/btn_fold_three" />
 </android.support.constraint.ConstraintLayout>

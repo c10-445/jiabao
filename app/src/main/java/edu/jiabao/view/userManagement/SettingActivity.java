@@ -12,7 +12,10 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.List;
+
 import edu.jiabao.R;
+import edu.jiabao.entry.OperatorEntry;
 import edu.jiabao.floatWindow.FlowWindowService;
 
 public class SettingActivity extends AppCompatActivity {
@@ -43,11 +46,25 @@ public class SettingActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     if (Settings.canDrawOverlays(SettingActivity.this)) {
-
+                        List<OperatorEntry> list=OperatorEntry.getOperatorEntries();
                         Intent intent = new Intent(SettingActivity.this, FlowWindowService.class);
                         Log.i("activity", "h" + height);
                         intent.putExtra("height", height);
                         intent.putExtra("width", width);
+                        /*
+                        if (!list.isEmpty()) {
+                            intent.putExtra("operatorId1",list.get(0).getOperator_id());
+                        }
+
+                        if (list.size()>=1){
+                            intent.putExtra("operatorId2",list.get(1).getOperator_id());
+
+                        }
+
+                        if (list.size()>=2){
+                            intent.putExtra("operatorId3",list.get(2).getOperator_id());
+                        }*/
+
                         Toast.makeText(SettingActivity.this, "已开启Toucher", Toast.LENGTH_SHORT).show();
                         startService(intent);
                         //finish();

@@ -1,7 +1,5 @@
 package edu.jiabao.entry;
 
-import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -16,11 +14,21 @@ public class OperatorEntry {
     private int user_id;
     private List<OperatorItemBean> content_list;
 
+    public OperatorEntry(){}
+
     public static List<OperatorEntry> getOperatorEntries() {
         if(operatorEntries==null) {
             operatorEntries=new ArrayList<OperatorEntry>();
         }
         return operatorEntries;
+    }
+
+    public static OperatorEntry getOperatorEntryById(int id){
+        OperatorEntry entry=new OperatorEntry();
+        for (int i=0;i<operatorEntries.size();i++)
+            if (operatorEntries.get(i).getOperator_id()==id)
+                entry=operatorEntries.get(i);
+        return entry;
     }
 
     public static void setOperatorEntries(List<Operator> list){
@@ -80,7 +88,7 @@ public class OperatorEntry {
         List<OperatorItemBean> tag=new ArrayList<>();
         LinkedList<OperatorItemBean> linkedList=new LinkedList<>();
         linkedList.addAll(entry.getContent_list());
-        Log.i("link_size",String.valueOf(linkedList.size()));
+        //Log.i("link_size",String.valueOf(linkedList.size()));
         while (!linkedList.isEmpty()){
             OperatorItemBean tem=linkedList.removeFirst();
             PackageEntry packageEntry=PackageEntry.getPackageById(tem.getObjectId());

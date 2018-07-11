@@ -18,6 +18,7 @@ import edu.jiabao.dao.Dao;
 import edu.jiabao.entry.OperatorEntry;
 import edu.jiabao.entry.OperatorItemBean;
 import edu.jiabao.entry.PackageEntry;
+import edu.jiabao.entry.TimingEntry;
 
 public class Http {
     private static String ip="https://www.cjtellyou.xyz";
@@ -215,6 +216,52 @@ public class Http {
         Log.i("packageName","https://control-1253647932.cosgz.myqcloud.com/"+String.valueOf(userId)+".json");
         params.setAutoRename(true);
         x.http().get(params,callback);
+    }
+
+    public static void sentTiming(TimingEntry entry,Callback.CommonCallback<String> callback){
+        RequestParams params=new RequestParams(ip+"/control/timertask/addTask");
+        params.addHeader("Content-Type", "application/json-rpc");
+
+        JsonArray jsonArray=new JsonArray();
+        List<OperatorItemBean> list= entry.getOperator_list();
+        for (int i=0;i<list.size();i++){
+            OperatorItemBean bean= list.get(i);
+            JsonObject jsonObject=new JsonObject();
+            PackageEntry packageEntry=PackageEntry.getPackageById(bean.getObjectId());
+            jsonObject.addProperty("userId",entry.getUser_id());
+            jsonObject.addProperty("deviceId",packageEntry.getDevice_id());
+            jsonObject.addProperty("executeTime",entry.getTime().getTime()/1000);
+            switch (bean.getOperatorId()){
+                case 0:
+                    jsonObject.addProperty("switchState", bean.getParameter());
+                    Log.i("Http_Switch",String.valueOf(bean.getParameter()));
+                    break;
+                case 1:
+                    jsonObject.addProperty("runMode",bean.getParameter());
+                    break;
+                case 2:
+                    jsonObject.addProperty("fanModel",bean.getParameter());
+                    break;
+                case 3:
+                    jsonObject.addProperty("temperature",bean.getParameter()+20);
+                    break;
+            }
+            jsonArray.add(jsonObject);
+        }
+
+        params.setBodyContent(jsonArray.toString());
+
+        x.http().post(params, callback);
+    }
+
+    public static void sentCancelTiming(TimingEntry entry, Callback.CommonCallback<String> callback){
+        RequestParams params=new RequestParams(ip+"/control/timertask/cancelTask");
+        List<Integer> list=entry.getTask_id_list();
+        for (int i=0;i<list.size();i++){
+            params.addBodyParameter("taskIds", list.toString());
+        }
+
+        x.http().get(params, callback);
     }
 
 }
